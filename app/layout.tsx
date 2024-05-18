@@ -1,3 +1,4 @@
+import Navbar from "./Navbar";
 
 export const metadata = {
   title: "Next.js",
@@ -11,6 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+        <Navbar />
         <body>{children}</body>
     </html>
   )
