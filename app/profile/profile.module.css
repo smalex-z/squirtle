@@ -2,14 +2,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative; /* Needed for absolute positioning of the edit button */
-  padding: 20px;
+  position: relative;
+  padding: 1.25em;
   font-family: 'Lato', sans-serif;
   min-height: 100vh;
   margin: 0 auto;
-  background-size: cover; /* Ensure the background image covers the container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent background image from repeating */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .profileInfoContainer {
@@ -24,33 +24,33 @@
 
 .buttonContainer {
   display: flex;
-  flex-direction: row; /*flex items will be laid out in a row */
+  flex-direction: row;
   justify-content: center;
-  gap: 50px;
-  margin-top: 100px;
+  gap: 3.125em;
+  margin-top: 6.25em;
 }
 
 .buttonWithImage {
-  width: 80px; /* Adjusted smaller width */
-  height: 80px; /* Adjusted smaller height */
-  border: 2px solid #ccc;
-  padding: 10px; /* Adjusted padding */
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 5em;
+  height: 5em;
+  border: 0.125em solid #ccc;
+  padding: 0.625em;
+  border-radius: 0.625em;
+  box-shadow: 0 0.125em 0.3125em rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically and horizontally */
-  cursor: pointer; /* Indicates the entire area is clickable */
-  text-decoration: none; /* Removes any underline from text */
-  border: none; /* Removes button border */
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
   transition: transform 0.3s, box-shadow 0.3s;
   background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
 }
 
 .buttonWithImage:hover {
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Enhances the shadow for a lifting effect */
+  transform: scale(1.05);
+  box-shadow: 0 0.25em 0.5em rgba(0,0,0,0.2);
   animation: pulse 1s infinite;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .buttonIcon {
-  margin-bottom: 15px; /* Reduced space between icon and text */
+  margin-bottom: 0.9375em;
 }
 
 .rideShareCount {
@@ -70,38 +70,37 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 1.5em;
   position: absolute;
-  gap: 50px;
+  gap: 3.125em;
 }
 
 .bigNumber {
-  font-size: 70px;
+  font-size: 4.375em;
   font-family: 'Roboto', sans-serif;
 }
 
 .editButton {
-  padding: 10px 20px;
+  padding: 0.625em 1.25em;
   border: none;
-  border-radius: 5px;
-  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%); 
+  border-radius: 0.3125em;
+  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
   cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition for background color */
-  display: flex; /* Use flexbox to align text and image */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  gap: 10px; /* Add some space between the icon and text */
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625em;
   position: absolute;
-  top: 20px;
-  right: 60px; /* Positioning at top right corner of the box */
-  padding: 10px 20px;
-  transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s; /* Adjusted duration for transform */
+  top: 1.25em;
+  right: 3.75em;
+  transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s;
 }
 
 .editButton:hover {
-  background-color: #0056b3; /* darker shade on hover */
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for a lifting effect */
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.2);
 }
 
 .modal {
@@ -110,12 +109,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  padding: 1.25em;
+  border-radius: 0.625em;
+  box-shadow: 0 0.3125em 0.9375em rgba(0,0,0,0.3);
   z-index: 1000;
   max-width: 90%;
-  width: 500px;
+  width: 31.25em;
   flex-direction: column;
 }
 
