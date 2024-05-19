@@ -1,15 +1,11 @@
 .profileContainer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the top */
   position: relative; /* Needed for absolute positioning of the edit button */
-  max-width: 800px; /* Increased width */
+  max-width: 1000px; /* Increased width */
   margin: 20px auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #e0f7fa; /* Light blue background */
-  border-color: #a7ffeb; /* Mint green border */
 }
 
 .profileInfoContainer {
@@ -18,37 +14,17 @@
 }
 
 .profilePicture {
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
-  border: 4px solid #81d4fa; /* Brighter blue for more emphasis */
-}
-
-.rideShareCountContainer {
-  text-align: center; /* Centers text horizontally */
-  flex-grow: 1; /* Takes up available space, helping with vertical centering */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  font-size: 24px; /* Increases the font size for visibility */
-  color: #4caf50;
-}
-
-.rideShareCount {
-  font-weight: bold;
-  background-color: #81d4fa;
-  padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .buttonContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /*flex items will be laid out in a row */
   justify-content: center;
   gap: 50px;
+  margin-top: 150px;
 }
 
 .buttonWithImage {
@@ -57,7 +33,6 @@
   border: 2px solid #ccc;
   padding: 10px; /* Adjusted padding */
   border-radius: 10px;
-  background-color: #f9f9f9;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
@@ -65,7 +40,6 @@
   justify-content: center; /* Center content vertically and horizontally */
   cursor: pointer; /* Indicates the entire area is clickable */
   text-decoration: none; /* Removes any underline from text */
-  color: inherit; /* Inherits font color from parent */
   border: none; /* Removes button border */
   transition: transform 0.3s, box-shadow 0.3s;
   background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
@@ -87,22 +61,30 @@
   margin-bottom: 15px; /* Reduced space between icon and text */
 }
 
-.button {
+.rideShareCount {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 24px; /* Increases the font size for visibility */
+  position: absolute;
+  top: 150px;
+  right: 400px;
+}
+
+.bigNumber {
+  font-size: 35px;
+}
+
+.editButton {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%); 
-  color: black;
   cursor: pointer;
   transition: background-color 0.3s; /* Smooth transition for background color */
-}
-
-.button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-
-.editButton {
   display: flex; /* Use flexbox to align text and image */
   align-items: center; /* Center items vertically */
   justify-content: center; /* Center items horizontally */
@@ -111,9 +93,6 @@
   top: 20px;
   right: 20px; /* Positioning at top right corner of the box */
   padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s; /* Adjusted duration for transform */
 }
 

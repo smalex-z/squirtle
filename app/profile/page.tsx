@@ -24,10 +24,12 @@ const Profile = (props: UserProfileProps) => {
             <h3>@{props.username}</h3>
             <p>UCLA {props.grad_date}</p>
           </div>
-          <div className={styles.rideShareCountContainer}>
-            <p className={styles.rideShareCount}>Ride Share Count: {props.numberOfShares}</p>
-          </div>
-          <div className={styles.buttonContainer}>
+        </div>
+        <div className={styles.rideShareCount}>
+          <p className={styles.bigNumber}>{props.numberOfShares}</p>
+          Ride Share Count
+        </div>
+        <div className={styles.buttonContainer}>
             <button className={styles.buttonWithImage}>
               <Image src="/helpSymbol.webp" alt="Help Icon" className={styles.buttonIcon} width={30} height={30} />
               Help
@@ -36,9 +38,8 @@ const Profile = (props: UserProfileProps) => {
               <Image src="/receipt.png" alt="Activity Icon" className={styles.buttonIcon} width={25} height={25} />
               Activity
             </button>
-          </div>
         </div>
-        <button className={`${styles.button} ${styles.editButton}`}>
+        <button className={styles.editButton}>
           Edit Profile
           <Image src="/logoSquirtle.png" alt="Squirtle" width={30} height={30} />
         </button>
