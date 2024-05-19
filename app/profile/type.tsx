@@ -1,8 +1,9 @@
 export interface UserProfileProps {
   name: string;
-  username: string
+  username: string;
   bio: string;
   email: string;
-  numberOfShares: number
+  numberOfShares: number;
   profilePictureUrl: string;
+  backgroundUrl: string
 }

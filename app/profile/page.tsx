@@ -20,8 +20,11 @@ const Profile = (props: UserProfileProps) => {
 
   return (
     <>
-      <Navbar />
-      <div className={styles.profileContainer}>
+      <div 
+        className={styles.profileContainer}
+        style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      >
+        <Navbar />
         <div className={styles.profileInfoContainer}>
           <Image src={props.profilePictureUrl} alt="Profile Picture" className={styles.profilePicture} width={150} height={150} />
           <div className={styles.profileInfo}>
@@ -67,7 +70,8 @@ const Page = () => {
     bio: 'UCLA 2027',
     email: 'krsun05@g.ucla.edu',
     numberOfShares: 42,
-    profilePictureUrl: '/Duck.jpeg'
+    profilePictureUrl: '/Duck.jpeg',
+    backgroundUrl: '/defaultProfileBackground.avif'
   };
 
   return <Profile {...userData} />;
