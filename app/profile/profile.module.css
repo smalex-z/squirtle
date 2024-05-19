@@ -1,130 +1,74 @@
 .profileContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative; /* Needed for absolute positioning of the edit button */
-  padding: 20px;
-  font-family: 'Lato', sans-serif;
-  min-height: 100vh;
+  background: #f2f2f2;
+  border-radius: 0.625em;
+  box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
+  padding: 1.25em;
+  max-width: 62.5em;
   margin: 0 auto;
-  background-size: cover; /* Ensure the background image covers the container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent background image from repeating */
-}
-
-.profileInfoContainer {
-  flex: 1;
-  text-align: center;
+  text-align: left;
+  flex-grow: 1;
 }
 
 .profilePicture {
   border-radius: 50%;
+  width: 9.375em;
+  height: 9.375em;
   object-fit: cover;
 }
 
-.buttonContainer {
-  display: flex;
-  flex-direction: row; /*flex items will be laid out in a row */
-  justify-content: center;
-  gap: 50px;
-  margin-top: 100px;
+.profileInfo {
+  margin-top: 1.25em;
 }
 
-.buttonWithImage {
-  width: 80px; /* Adjusted smaller width */
-  height: 80px; /* Adjusted smaller height */
-  border: 2px solid #ccc;
-  padding: 10px; /* Adjusted padding */
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Center content vertically and horizontally */
-  cursor: pointer; /* Indicates the entire area is clickable */
-  text-decoration: none; /* Removes any underline from text */
-  border: none; /* Removes button border */
-  transition: transform 0.3s, box-shadow 0.3s;
-  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
+.profileInfo h1 {
+  margin: 0;
 }
 
-.buttonWithImage:hover {
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Enhances the shadow for a lifting effect */
-  animation: pulse 1s infinite;
+.profileInfo h3 {
+  margin: 0.3125em 0;
+  color: #f2f2f2;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+.profileInfo p {
+  margin: 0.3125em 0;
+  color: #f2f2f2;
 }
 
-.buttonIcon {
-  margin-bottom: 15px; /* Reduced space between icon and text */
+.profileInfo input {
+  display: block;
+  margin-top: 0.625em;
 }
 
-.rideShareCount {
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  position: absolute;
-  gap: 50px;
+.profileInfo button {
+  display: block;
+  margin-top: 0.625em;
 }
 
-.bigNumber {
-  font-size: 70px;
-  font-family: 'Roboto', sans-serif;
+.myRides {
+  margin-top: 1.25em;
 }
 
-.editButton {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%); 
-  cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition for background color */
-  display: flex; /* Use flexbox to align text and image */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  gap: 10px; /* Add some space between the icon and text */
-  position: absolute;
-  top: 20px;
-  right: 60px; /* Positioning at top right corner of the box */
-  padding: 10px 20px;
-  transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s; /* Adjusted duration for transform */
+.ride {
+  border: 0.0625em solid #ddd;
+  border-radius: 0.625em;
+  padding: 0.625em;
+  margin-bottom: 0.625em;
 }
 
-.editButton:hover {
-  background-color: #0056b3; /* darker shade on hover */
-  transform: scale(1.05); /* Slightly enlarges the button */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for a lifting effect */
+.ride h2 {
+  margin: 0;
 }
 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  z-index: 1000;
-  max-width: 90%;
-  width: 500px;
-  flex-direction: column;
+.ride p {
+  margin: 0.3125em 0;
+  color: #666;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 999;
+.profileInfo input[type="password"] {
+  display: block;
+  margin-top: 0.625em;
+  border: 0.0625em solid #ddd;
+  border-radius: 0.3125em;
+  padding: 0.625em;
+  transition: all 0.3s ease;
 }

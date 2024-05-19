@@ -1,10 +1,12 @@
 "use client"
-import Navbar from "../Navbar";
 import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './profile.module.css'
 import { UserProfileProps } from './type';
 import Modal from './modal';
+
+import '../Page.css';
+import Navbar from '../Navbar';
 
 const Profile = (props: UserProfileProps) => {
 
@@ -20,44 +22,35 @@ const Profile = (props: UserProfileProps) => {
 
   return (
     <>
-      <div 
-        className={styles.profileContainer}
-        style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-      >
+      <div className="home-container">
         <Navbar />
-        <div className={styles.profileInfoContainer}>
+        <div
+          className={styles.profileContainer}
+          style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
           <Image src={props.profilePictureUrl} alt="Profile Picture" className={styles.profilePicture} width={150} height={150} />
           <div className={styles.profileInfo}>
             <h1>{props.name}</h1>
             <h3>@{props.username}</h3>
             <p>{props.bio}</p>
+            <input type="password" placeholder="Password" />
+            <button onClick={openModal}>Change Password</button>
           </div>
+          <div className={styles.myRides}>
+            {props.rides.map((ride, index) => (
+              <div key={index} className={styles.ride}>
+                <h2>{ride.title}</h2>
+                <p>{ride.date}</p>
+                <p>{ride.dropOffLocation}</p>
+              </div>
+            ))}
+          </div>
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            userProfile={props}
+          />
         </div>
-        <div className={styles.rideShareCount}>
-          <p className={styles.bigNumber}>{props.numberOfShares}</p>
-          Ride Share Count
-        </div>
-        <div className={styles.buttonContainer}>
-            <button className={styles.buttonWithImage}>
-              <Image src="/helpSymbol.webp" alt="Help Icon" className={styles.buttonIcon} width={30} height={30} />
-              Help
-            </button>
-            <button className={styles.buttonWithImage}>
-              <Image src="/receipt.png" alt="Activity Icon" className={styles.buttonIcon} width={25} height={25} />
-              Activity
-            </button>
-        </div>
-        <button className={styles.editButton} onClick={openModal}>
-          Edit Profile
-          <Image src="/logoSquirtle.png" alt="Squirtle" width={30} height={30} />
-        </button>
-
-        <Modal 
-          isOpen={isModalOpen} 
-          onClose={closeModal} 
-          userProfile={props}
-        />
-
       </div>
     </>
   );
@@ -71,7 +64,11 @@ const Page = () => {
     email: 'krsun05@g.ucla.edu',
     numberOfShares: 42,
     profilePictureUrl: '/Duck.jpeg',
-    backgroundUrl: '/defaultProfileBackground.avif'
+    backgroundUrl: '/defaultProfileBackground.avif',
+    rides: [
+      { title: 'Ride 1', date: '2024-01-01', dropOffLocation: 'Location 1' },
+      { title: 'Ride 2', date: '2024-01-02', dropOffLocation: 'Location 2' },
+    ],
   };
 
   return <Profile {...userData} />;
