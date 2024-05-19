@@ -18,6 +18,7 @@ export default function Navbar() {
                 <span><img src="/logoSquirtle.png" alt="Home" /></span>
               </Link>
             </li>
+            <NavbarItem href="/search">Search</NavbarItem>
             <NavbarItem href="/about">About</NavbarItem>
             <NavbarItem href="/dashboard">Dashboard</NavbarItem>
             <NavbarItem href="/profile">Profile</NavbarItem>
