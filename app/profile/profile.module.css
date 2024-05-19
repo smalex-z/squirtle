@@ -26,6 +26,24 @@
   border: 4px solid #81d4fa; /* Brighter blue for more emphasis */
 }
 
+.rideShareCountContainer {
+  text-align: center; /* Centers text horizontally */
+  flex-grow: 1; /* Takes up available space, helping with vertical centering */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  font-size: 24px; /* Increases the font size for visibility */
+  color: #4caf50;
+}
+
+.rideShareCount {
+  font-weight: bold;
+  background-color: #81d4fa;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .buttonContainer {
   display: flex;
   flex-direction: row;
@@ -73,8 +91,8 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: white;
+  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%); 
+  color: black;
   cursor: pointer;
   transition: background-color 0.3s; /* Smooth transition for background color */
 }
@@ -85,12 +103,22 @@
 
 
 .editButton {
+  display: flex; /* Use flexbox to align text and image */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 10px; /* Add some space between the icon and text */
   position: absolute;
   top: 20px;
   right: 20px; /* Positioning at top right corner of the box */
-  background-color: #4db6ac
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s; /* Adjusted duration for transform */
 }
 
-.button:hover, .editButton:hover {
-  background-color: #29b6f6; /* darker shade on hover */
+.editButton:hover {
+  background-color: #0056b3; /* darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarges the button */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Adds shadow for a lifting effect */
 }

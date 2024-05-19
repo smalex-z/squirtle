@@ -23,20 +23,25 @@ const Profile = (props: UserProfileProps) => {
             <h1>{props.name}</h1>
             <h3>@{props.username}</h3>
             <p>UCLA {props.grad_date}</p>
-            <p>Ride Share Count: {props.numberOfShares}</p>
-            <div className={styles.buttonContainer}>
-              <button className={styles.buttonWithImage}>
-                <Image src="/helpSymbol.webp" alt="Help Icon" className={styles.buttonIcon} width={30} height={30}/>
-                Help
-              </button>
-              <button className={styles.buttonWithImage}>
-                <Image src="/receipt.png" alt="Activity Icon" className={styles.buttonIcon} width={25} height={25}/>
-                Activity
-              </button>
-            </div>
+          </div>
+          <div className={styles.rideShareCountContainer}>
+            <p className={styles.rideShareCount}>Ride Share Count: {props.numberOfShares}</p>
+          </div>
+          <div className={styles.buttonContainer}>
+            <button className={styles.buttonWithImage}>
+              <Image src="/helpSymbol.webp" alt="Help Icon" className={styles.buttonIcon} width={30} height={30} />
+              Help
+            </button>
+            <button className={styles.buttonWithImage}>
+              <Image src="/receipt.png" alt="Activity Icon" className={styles.buttonIcon} width={25} height={25} />
+              Activity
+            </button>
           </div>
         </div>
-        <button className={`${styles.button} ${styles.editButton}`}>Edit Profile</button>
+        <button className={`${styles.button} ${styles.editButton}`}>
+          Edit Profile
+          <Image src="/logoSquirtle.png" alt="Squirtle" width={30} height={30} />
+        </button>
       </div>
     </>
   );
