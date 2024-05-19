@@ -15,7 +15,8 @@ export default function Navbar() {
           <ul className="navbar">
             <li>
               <Link href="/">
-                <span><img src="/logoSquirtle.png" alt="Home" /></span>
+                Squirtle
+                {/* <span><img src="/logoSquirtle.png" alt="Home" /></span> */}
               </Link>
             </li>
             <NavbarItem href="/about">About</NavbarItem>
