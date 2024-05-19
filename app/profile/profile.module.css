@@ -1,129 +1,74 @@
 .profileContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
+  background: #f2f2f2;
+  border-radius: 0.625em;
+  box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
   padding: 1.25em;
-  font-family: 'Lato', sans-serif;
-  min-height: 100vh;
+  max-width: 62.5em;
   margin: 0 auto;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.profileInfoContainer {
-  flex: 1;
-  text-align: center;
+  text-align: left;
+  flex-grow: 1;
 }
 
 .profilePicture {
   border-radius: 50%;
+  width: 9.375em;
+  height: 9.375em;
   object-fit: cover;
 }
 
-.buttonContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 3.125em;
-  margin-top: 6.25em;
+.profileInfo {
+  margin-top: 1.25em;
 }
 
-.buttonWithImage {
-  width: 5em;
-  height: 5em;
-  border: 0.125em solid #ccc;
+.profileInfo h1 {
+  margin: 0;
+}
+
+.profileInfo h3 {
+  margin: 0.3125em 0;
+  color: #f2f2f2;
+}
+
+.profileInfo p {
+  margin: 0.3125em 0;
+  color: #f2f2f2;
+}
+
+.profileInfo input {
+  display: block;
+  margin-top: 0.625em;
+}
+
+.profileInfo button {
+  display: block;
+  margin-top: 0.625em;
+}
+
+.myRides {
+  margin-top: 1.25em;
+}
+
+.ride {
+  border: 0.0625em solid #ddd;
+  border-radius: 0.625em;
   padding: 0.625em;
-  border-radius: 0.625em;
-  box-shadow: 0 0.125em 0.3125em rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
+  margin-bottom: 0.625em;
 }
 
-.buttonWithImage:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0.25em 0.5em rgba(0,0,0,0.2);
-  animation: pulse 1s infinite;
+.ride h2 {
+  margin: 0;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+.ride p {
+  margin: 0.3125em 0;
+  color: #666;
 }
 
-.buttonIcon {
-  margin-bottom: 0.9375em;
-}
-
-.rideShareCount {
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5em;
-  position: absolute;
-  gap: 3.125em;
-}
-
-.bigNumber {
-  font-size: 4.375em;
-  font-family: 'Roboto', sans-serif;
-}
-
-.editButton {
-  padding: 0.625em 1.25em;
-  border: none;
+.profileInfo input[type="password"] {
+  display: block;
+  margin-top: 0.625em;
+  border: 0.0625em solid #ddd;
   border-radius: 0.3125em;
-  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625em;
-  position: absolute;
-  top: 1.25em;
-  right: 3.75em;
-  transition: background-color 0.3s, transform 0.5s, box-shadow 0.3s;
-}
-
-.editButton:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
-  box-shadow: 0 0.3125em 0.9375em rgba(0, 0, 0, 0.2);
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 1.25em;
-  border-radius: 0.625em;
-  box-shadow: 0 0.3125em 0.9375em rgba(0,0,0,0.3);
-  z-index: 1000;
-  max-width: 90%;
-  width: 31.25em;
-  flex-direction: column;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 999;
+  padding: 0.625em;
+  transition: all 0.3s ease;
 }
