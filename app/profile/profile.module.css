@@ -1,29 +1,96 @@
-/* Profile.module.css */
 .profileContainer {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .profilePicture {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;  /* Makes the image circular */
-    object-fit: cover;  /* Ensures the image covers the space without distorting */
-    margin-bottom: 20px;
-  }
-  
-  .profileInfo {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .profileHeader {
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  position: relative; /* Needed for absolute positioning of the edit button */
+  max-width: 800px; /* Increased width */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #e0f7fa; /* Light blue background */
+  border-color: #a7ffeb; /* Mint green border */
+}
+
+.profileInfoContainer {
+  flex: 1;
+  text-align: left;
+}
+
+.profilePicture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 4px solid #81d4fa; /* Brighter blue for more emphasis */
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+
+.buttonWithImage {
+  width: 80px; /* Adjusted smaller width */
+  height: 80px; /* Adjusted smaller height */
+  border: 2px solid #ccc;
+  padding: 10px; /* Adjusted padding */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically and horizontally */
+  cursor: pointer; /* Indicates the entire area is clickable */
+  text-decoration: none; /* Removes any underline from text */
+  color: inherit; /* Inherits font color from parent */
+  border: none; /* Removes button border */
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-image: linear-gradient(145deg, #b2ebf2 40%, #c8e6c9 100%);
+}
+
+.buttonWithImage:hover {
+  transform: scale(1.05); /* Slightly enlarges the button */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Enhances the shadow for a lifting effect */
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.buttonIcon {
+  margin-bottom: 15px; /* Reduced space between icon and text */
+}
+
+.button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+
+.editButton {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Positioning at top right corner of the box */
+  background-color: #4db6ac
+}
+
+.button:hover, .editButton:hover {
+  background-color: #29b6f6; /* darker shade on hover */
+}
