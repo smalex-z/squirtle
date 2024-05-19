@@ -3,6 +3,7 @@ import './Page.css';
 
 export default function Page() {
   return (
+    <>
     <div className="home-container">
       <Navbar />
       <div className="home-content">
@@ -10,5 +11,6 @@ export default function Page() {
         <p>A rideshare app for students that makes them save money</p>
       </div>
     </div>
+    </>
   )
 }
