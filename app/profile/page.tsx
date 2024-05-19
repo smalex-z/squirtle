@@ -1,18 +1,23 @@
+"use client"
 import Navbar from "../Navbar";
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './profile.module.css'
-
-interface UserProfileProps {
-  name: string;
-  username: string
-  grad_date: string;
-  email: string;
-  numberOfShares: number
-  profilePictureUrl: string;
-}
+import { UserProfileProps } from './type';
+import Modal from './modal';
 
 const Profile = (props: UserProfileProps) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <Navbar />
@@ -22,7 +27,7 @@ const Profile = (props: UserProfileProps) => {
           <div className={styles.profileInfo}>
             <h1>{props.name}</h1>
             <h3>@{props.username}</h3>
-            <p>UCLA {props.grad_date}</p>
+            <p>{props.bio}</p>
           </div>
         </div>
         <div className={styles.rideShareCount}>
@@ -39,10 +44,17 @@ const Profile = (props: UserProfileProps) => {
               Activity
             </button>
         </div>
-        <button className={styles.editButton}>
+        <button className={styles.editButton} onClick={openModal}>
           Edit Profile
           <Image src="/logoSquirtle.png" alt="Squirtle" width={30} height={30} />
         </button>
+
+        <Modal 
+          isOpen={isModalOpen} 
+          onClose={closeModal} 
+          userProfile={props}
+        />
+
       </div>
     </>
   );
@@ -52,7 +64,7 @@ const Page = () => {
   const userData: UserProfileProps = {
     name: 'Kevin Sun',
     username: 'duckonwheels',
-    grad_date: '2027',
+    bio: 'UCLA 2027',
     email: 'krsun05@g.ucla.edu',
     numberOfShares: 42,
     profilePictureUrl: '/Duck.jpeg'
