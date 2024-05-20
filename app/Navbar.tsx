@@ -11,19 +11,21 @@ const NavbarItem = ({ href, children }: { href: string, children: React.ReactNod
 
 export default function Navbar() {
     return (
+      <div className= "navbar_container">
         <nav>
           <ul className="navbar">
             <li>
               <Link href="/">
-                <span><img src="/logoSquirtle.png" alt="Home" /></span>
+                Squirtle
+                {/* <span><img src="/logoSquirtle.png" alt="Home" /></span> */}
               </Link>
             </li>
             <NavbarItem href="/search">Search</NavbarItem>
-            <NavbarItem href="/about">About</NavbarItem>
             <NavbarItem href="/dashboard">Dashboard</NavbarItem>
             <NavbarItem href="/profile">Profile</NavbarItem>
             <NavbarItem href="/login">Login</NavbarItem>
           </ul>
         </nav>
+      </div>
     );
 }
