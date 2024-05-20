@@ -1,14 +1,16 @@
 import Navbar from "./Navbar";
 import './Page.css';
+import Image from 'next/image';
 
 export default function Page() {
+
   return (
     <>
-    <section className="home-container">
+      <section className="home-container">
         <Navbar />
         <div className="home-content">
           <h1>SQUIRTLE</h1>
-          <p>A rideshare app for students that makes them save money</p>
+          <p>Enhancement of the university transportation experience</p>
         </div>
       </section>
 
@@ -19,7 +21,7 @@ export default function Page() {
             <h3>What is SQUIRTLE?</h3>
           </div>
           <p>
-            <span>SQUIRTLE is a revolutionary rideshare app</span> 
+            <span>SQUIRTLE is a revolutionary rideshare app,</span>
             <span>Designed specifically for UCLA students</span>
           </p>
         </div>
@@ -39,7 +41,7 @@ export default function Page() {
               <h4>02</h4>
               <p>Our Vision</p>
             </div>
-            <p>Expanding Through the Country</p>
+            <p>Expanding to all Universities</p>
           </div>
           <div className="mva">
             <div className="mva-item">
@@ -48,6 +50,14 @@ export default function Page() {
             </div>
             <p>Transforming Campus Commutes</p>
           </div>
+        </div>
+      </section>
+
+      <section className="join-container">
+        <div className="join-content">
+          <h1>Join SQUIRTLE today!</h1>
+          <Image src="/logoSquirtle.png" alt="SQUIRTLE rideshare" height={150} width={150}/>
+          <p>Discover innovative rideshare and save money TOO!</p>
         </div>
       </section>
     </>
