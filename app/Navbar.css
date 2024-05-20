@@ -1,32 +1,42 @@
-.navbar_container{
-    width: 100%;
+.navbar_container {
     display: flex;
-    height: 82px;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.squirtle_logo {
+    display: flex;
     align-items: center;
 }
 
-.nav{
-    width: 100%;
+.squirtle_logo img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+    background-color: #f8f9fa93;
+    border: 1px solid #dee2e693;
+
+}
+
+.nav {
+    flex-grow: .4;
 }
 
 .navbar {
-    position: absolute;
-    top: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style-type: none;
-    padding: 20px 40px; /* Reduced vertical padding */
-    transform: translateX(-50%) ;
-    margin: 0 auto;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 50px;
-    width: 35%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 20px 40px;
+    background-color: #f8f9fa93;
+    border: 1px solid #dee2e693;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     font-family: 'Arial', sans-serif;
-    margin-top: 30px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
 }
 
@@ -35,17 +45,9 @@
     text-decoration: none;
     font-weight: bold;
     display: flex;
-    vertical-align: middle;
+    align-items: center;
 }
 
 .navbar li a:hover {
     color: #007bff;
-    display: flex;
-    align-items: center;
-}
-
-.navbar li img {
-    width: auto;
-    height: 60px;
-    margin-right: 10px;
 }
