@@ -60,6 +60,7 @@ export default function Page() {
           <p>Discover innovative rideshare and save money TOO!</p>
         </div>
       </section>
+
     </>
   )
 }
