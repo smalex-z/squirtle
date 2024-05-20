@@ -27,3 +27,103 @@ html, body {
   font-size: 1.5em;
   font-weight: bold;
 }
+
+.about-container {
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  height: 100vh;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  font-family: 'Arial', sans-serif;
+  gap: 200px
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+.title h1 {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.title h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.about-content p {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25em;
+  line-height: 1.6;
+}
+
+.mva-container {
+  background: #000;
+  color: white;
+  padding: 100px 0;
+  height: 100vh;
+  align-items:center;
+  justify-content: center;
+}
+
+.mva-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  gap: 200px;
+}
+
+.mva {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; 
+  gap: 200px; 
+  align-items: center; 
+  border-bottom: 1px solid #444;
+  padding-bottom: 20px;
+}
+
+.mva-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.mva-item h4 {
+  margin: 0;
+  font-size: 1.2em; 
+  font-weight: normal;
+  color: #888; 
+}
+
+.mva-item p {
+  margin: 0;
+  font-size: 1em; 
+  font-weight: bold; 
+  color: #fff;
+}
+
+.mva p {
+  font-size: 1.5em; 
+  font-weight: bold;
+  margin: 0;
+  color: #fff;
+  flex: 1; 
+  text-align: right
+}
