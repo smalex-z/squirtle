@@ -130,6 +130,7 @@ function DropdownSearch() {
 export default function Page() {
     return (
         <>
+        <div className="ride-container">
             <Navbar />
             <div className="container my-3 mb-5">
                 <div className="row h-100">
@@ -151,6 +152,7 @@ export default function Page() {
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 }

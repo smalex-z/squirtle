@@ -1,5 +1,8 @@
 body {
     background: radial-gradient(circle, #a7a7a7, #ffffff);
+}
+
+.ride-container{
     height: 100vh;
     display: flex;
     flex-direction: column;
