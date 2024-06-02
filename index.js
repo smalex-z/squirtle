@@ -40,3 +40,12 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+app.get('/api/todoapp/GetNotes',(req,res)=>{
+    database.collection("todoappcollection").find({}).toArray((err,result)=>{
+        if(err) throw err;
+        res.send(result);
+    })
+})
+
+app.post('/api/todoapp/AddNote',(req,res)=>{
