@@ -16,11 +16,11 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 1vh 2vh;
   }
   
   .logo img {
-    height: 40px;
+    height: 4vh;
   }
   
   .nav ul {
@@ -31,24 +31,24 @@ html, body {
   }
   
   .nav ul li {
-    margin-left: 20px;
+    margin-left: 2vh;
   }
   
   .nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1vh;
   }
   
   .main-content {
-    padding: 20px;
+    padding: 2vh;
   }
   
   .trips-section {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2vh;
+    border-radius: 0.5vh;
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
   }
   
   .trips-section h1 {
@@ -57,7 +57,7 @@ html, body {
   
   .trip {
     border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 1vh 0;
   }
   
   .trip:last-child {
@@ -69,14 +69,14 @@ html, body {
   }
   
   .trip-details div {
-    margin-bottom: 5px;
+    margin-bottom: 0.5vh;
   }
   
   .footer {
     background-color: #000;
     color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 1vh 0;
     position: fixed;
     bottom: 0;
     width: 100%;
