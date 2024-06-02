@@ -27,7 +27,7 @@ html, body {
 .home-content p {
   font-size: 1.5em;
   font-weight: bold;
-  gap: 200px;
+  gap: 20vh;
 }
 
 .about-container {
@@ -35,7 +35,6 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
   height: 100vh;
 }
 
@@ -45,7 +44,7 @@ html, body {
   justify-content: space-between;
   width: 80%;
   font-family: 'Roboto', sans-serif;
-  gap: 200px
+  gap: 20vh;
 }
 
 .title {
@@ -75,7 +74,8 @@ html, body {
 .mva-container {
   background: #000;
   color: white;
-  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   align-items:center;
   justify-content: center;
@@ -84,22 +84,23 @@ html, body {
 .mva-content {
   padding: 100px;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   width: 60%;
   margin: 0 auto;
   font-family: 'Arial', sans-serif;
-  gap: 200px;
+  
 }
 
 .mva {
   display: flex;
   flex-direction: row;
   justify-content: flex-start; 
-  gap: 200px; 
+  gap: 20vh; 
   align-items: center; 
   border-bottom: 1px solid #444;
-  padding-bottom: 20px;
+  padding-bottom: 2vh
 }
 
 .mva-item {
@@ -136,7 +137,6 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
   height: 100vh;
   text-align: center;
 }
