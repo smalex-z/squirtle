@@ -22,11 +22,12 @@
 
 }
 
-.nav {
+.nav_menu {
     flex-grow: .4;
+    height: 100%;
 }
 
-.navbar {
+.navbar_items {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -38,9 +39,10 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     font-family: 'Arial', sans-serif;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+    margin: 0;
 }
 
-.navbar li a {
+.navbar_items li a {
     color: #212529;
     text-decoration: none;
     font-weight: bold;

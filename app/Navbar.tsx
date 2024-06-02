@@ -17,8 +17,8 @@ export default function Navbar() {
             <img src="/logoSquirtle.png" alt="Home" />
           </Link>
         </div>
-        <nav className="nav">
-          <ul className="navbar">
+        <nav className="nav_menu">
+          <ul className="navbar_items">
             <NavbarItem href="/dashboard">Dashboard</NavbarItem>
             <NavbarItem href="/search">Rides</NavbarItem>
             <NavbarItem href="/profile">Profile</NavbarItem>

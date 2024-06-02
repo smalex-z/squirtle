@@ -1,13 +1,47 @@
 body {
-    background: radial-gradient(circle, #5e78bd, #182048);
+    background: radial-gradient(circle, #a7a7a7, #ffffff);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    max-width: none;
+    width: 90vw;
+    margin: 0 5vw;
+    flex-grow: 1;
+}
+
+.ride-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: .5rem;
+    border-style: solid;
+    border-color: #cecece;
+    border-width: 2px;
+}
+
+.find-ride{
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    background-color: rgb(233, 230, 230);
+    box-shadow: 0px 9px 30px rgba(15, 15, 15, 0.616);
+    height: 100%;
+
 }
 
 .text-container {
     text-align: center;
-    margin-top: 200px; /* Adjust as needed */
-    color: rgb(233, 230, 230); /* Ensure text is visible against the background */
+    color: rgb(0, 0, 0); /* Ensure text is visible against the background */
     font-family: 'Arial', sans-serif; /* Ensure consistent font */
 }
+
+
+
+
 
 /* Custom styles for DropdownSearch component */
 
@@ -16,7 +50,6 @@ body {
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-    margin: -50px auto 0; /* Adjust the top margin to position the component slightly upwards */
 }
 
 .search-bar {
