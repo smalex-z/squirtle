@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../Navbar";
 import "./styles.css";
 
@@ -129,11 +130,27 @@ function DropdownSearch() {
 export default function Page() {
     return (
         <>
-            <div className="text-container">
-                <h2>Squirtle to and from our Westwood campus</h2>
-            </div>
             <Navbar />
-            <DropdownSearch />
+            <div className="container my-3 mb-5">
+                <div className="row h-100">
+                    <div className="col-3">
+                        <div className="row ride-search py-3">
+                            <div className="row text-container">
+                                <h2>Get a ride:</h2>
+                            </div>
+                            <div className="row">
+                                <DropdownSearch />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-9 h-100">
+                        <div className="row find-ride ms-5 py-3">
+                            <h1>Choose a ride:</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
