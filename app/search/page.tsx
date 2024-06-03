@@ -168,12 +168,12 @@ export default function Page() {
                     </div>
                     <div className="col-9 h-100">
                         <div className="row find-ride ms-5 py-3">
-                            <h1>Choose a ride:</h1>
-                            <div>
-                                {trips && trips.map((trip) => (
+                            {trips && trips.map((trip) => (
+                                <div className="card trip_card">
+                                    <h4><b>John Doe</b></h4>
                                     <p key={trip._id}>{trip.title}</p>
-                                ))}
-                            </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
