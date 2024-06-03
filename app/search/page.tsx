@@ -128,6 +128,28 @@ function DropdownSearch() {
 }
 
 export default function Page() {
+    const [trips, setTrips] = useState([]);
+
+    useEffect(() => {
+        const fetchTrips = async() => {
+            const response = await fetch("http://localhost:4000/api/trips");
+            const data = await response.json();
+            console.log(data);
+
+            if(response.ok) {
+                console.log("Success");
+                setTrips(data.trips);
+            } 
+
+        }
+
+        fetchTrips();
+    }, [])
+
+    useEffect(() => {
+        console.log("Trips: ", trips)
+    })
+
     return (
         <>
         <div className="ride-container">
@@ -147,7 +169,11 @@ export default function Page() {
                     <div className="col-9 h-100">
                         <div className="row find-ride ms-5 py-3">
                             <h1>Choose a ride:</h1>
-
+                            <div>
+                                {trips && trips.map((trip) => (
+                                    <p key={trip._id}>{trip.title}</p>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -48,4 +48,17 @@ app.get('/api/todoapp/GetNotes',(req,res)=>{
     })
 })
 
-app.post('/api/todoapp/AddNote',(req,res)=>{
+app.post('/api/todoapp/AddNote',multer().none(),(req,res)=>{
+  database.collection("todoappcollection").count({}, function(err, result){
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result.ops[0]);
+    }
+    database.collection("todoappcollection").insertOne({
+        id:(numofDocs+1).toString(),
+        description:request.body.newNotes
+    });
+    response.json("Note added successfully");
+    })
+});
