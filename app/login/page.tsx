@@ -1,21 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import styles from './Auth.module.css';
 
 
 export default function AuthPanel() {
     const [activeTab, setActiveTab] = useState('login');
-
-    const [csrfToken, setCsrfToken] = useState('');
-
-    useEffect(() => {
-        // Fetch CSRF token when component mounts
-        fetch('/api/csrfToken')
-            .then((res) => res.json())
-            .then((data) => setCsrfToken(data.csrfToken));
-    }, []);
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -48,20 +39,26 @@ export default function AuthPanel() {
         const password = event.target.password.value;
 
         const response = await fetch('/api/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ firstName, lastName, username, password }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ firstName, lastName, username, password }),
         });
 
-        const data = await response.json();
-        if (data.success) {
-          console.log('Signup successful!')
-        } else {
-          console.log('Signup failed!')
+        if (!response.ok) {
+            console.error('Signup failed');
+            return;
         }
-      };
+
+        const data = await response.json();
+
+        if (data.success) {
+            console.log('Signup successful!');
+        } else {
+            console.log('Signup failed!');
+        }
+    };
 
 
 
@@ -104,7 +101,6 @@ export default function AuthPanel() {
                                         </h4>
 
                                         <form method="post" className="w-100" onSubmit={handleLogin}>
-                                            <input type="hidden" name="_csrf" value={csrfToken} />
                                             <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                             <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                             <button type="submit" name="login-btn" className="btn btn-info w-100 mt-4 mb-4">Login</button>
@@ -120,9 +116,8 @@ export default function AuthPanel() {
                                             Sign Up to Squirtle
                                         </h4>
                                         <form method="post" className="w-100" onSubmit={handleSignup}>
-                                            <input type="hidden" name="_csrf" value={csrfToken} />
-                                            <p><input type="password" placeholder="First Name:" name="firstName" id="id_firstname" className={styles.formInput} /></p>
-                                            <p><input type="password" placeholder="Last Name:" name="lastName" id="id_lastname" className={styles.formInput} /></p>
+                                            <p><input type="text" placeholder="First Name:" name="firstName" id="id_firstname" className={styles.formInput} /></p>
+                                            <p><input type="text" placeholder="Last Name:" name="lastName" id="id_lastname" className={styles.formInput} /></p>
                                             <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                             <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                             <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>
