@@ -87,7 +87,7 @@ const TripForm = () => {
                 value={comment}
             />
 
-            <button>Add Workout</button>
+            <button>Add Trip</button>
             {error && <div className="error">{error}</div>}
         </form>
     )

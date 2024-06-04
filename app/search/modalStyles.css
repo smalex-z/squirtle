@@ -15,11 +15,12 @@
 
 .modal.show {
     display: block;
+    padding: 0px; /*bad padding*/
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: 1% auto; /*bad margin*/
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
