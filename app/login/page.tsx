@@ -4,7 +4,7 @@ import { useState } from 'react';
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import styles from './Auth.module.css';
 
-
+//updated
 export default function AuthPanel() {
     const [activeTab, setActiveTab] = useState('login');
 
