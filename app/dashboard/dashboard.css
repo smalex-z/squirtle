@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dashboard-container {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 100%;
+  }
+  
+  .header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vh;
+  }
+  
+  .logo img {
+    height: 4vh;
+  }
+  
+  .nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav ul li {
+    margin-left: 2vh;
+  }
+  
+  .nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1vh;
+  }
+  
+  .main-content {
+    padding: 2vh;
+  }
+  
+  .trips-section {
+    background-color: #fff;
+    padding: 2vh;
+    border-radius: 0.5vh;
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+  }
+  
+  .trips-section h1 {
+    margin-top: 0;
+  }
+  
+  .trip {
+    border-bottom: 1px solid #ddd;
+    padding: 1vh 0;
+  }
+  
+  .trip:last-child {
+    border-bottom: none;
+  }
+  
+  .trip-date {
+    font-weight: bold;
+  }
+  
+  .trip-details div {
+    margin-bottom: 0.5vh;
+  }
+  
+  .footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1vh 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  

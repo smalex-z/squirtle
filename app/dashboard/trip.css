@@ -1,0 +1,29 @@
+.trip {
+    display: flex;
+    align-items: center;
+    padding: 1vh 0;
+    border-bottom: 0.1vh solid #ddd;
+  }
+  
+  .trip:last-child {
+    border-bottom: none;
+  }
+  
+  .trip-icon {
+    width: 4vh;
+    height: 4vh;
+    margin-right: 1vh;
+  }
+  
+  .trip-details {
+    flex-grow: 1;
+  }
+  
+  .trip-address {
+    font-weight: bold;
+  }
+  
+  .trip-datetime, .trip-fare {
+    color: #555;
+  }
+  
