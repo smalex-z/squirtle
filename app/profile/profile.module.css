@@ -5,7 +5,6 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -14,36 +13,40 @@
 }
 
 .profileInfo {
-  margin-top: 20px;
+  margin-top: 1vh;
 }
 
 .profileInfo h1 {
-  margin: 10px 0;
+  margin: 5vh 0;
   font-size: 2em;
 }
 
 .profileInfo h3 {
-  margin: 5px 0;
+  margin: 2vh 0;
   font-size: 1.2em;
   color: #ccc;
 }
 
 .profileInfo p {
-  margin: 10px 0;
+  margin: 2vh 0;
   font-size: 1em;
 }
 
 .profileInfo button {
-  padding: 10px 20px;
-  margin-top: 15px;
+  padding: 1vh 2vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   font-size: 1em;
-  color: #fff;
-  background-color: #000;
   border: none;
-  border-radius: 5px;
+  background-color: #e0e0e0;
+  border-radius: 0.5vh;
   cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+  color: #333;
 }
 
 .profileInfo button:hover {
-  background-color: #333;
+  background-color: #c0c0c0;
+  color: #000;
 }

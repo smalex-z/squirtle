@@ -15,9 +15,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, userProfile }) => {
     <>
       <div className={styles.overlay} onClick={onClose}></div>
       <div className={styles.modal}>
-        <h2>Account Info</h2>
         <form className={styles.modalForm}>
-          <label>
+        <h2>Account Info</h2>
+          <label className={styles.item}>
             Name:
             <input type="text" defaultValue={userProfile.name} />
           </label>
