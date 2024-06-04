@@ -11,7 +11,7 @@
 label, input {
   display: block;
 }
-input {
+input, select {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -29,6 +29,17 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.pickupDrop {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adjust the space between the inputs as needed */
+}
+
+.pickupDrop > div {
+  flex: 1;
+}
+
 div.error {
   padding: 10px;
   background: #ffefef;

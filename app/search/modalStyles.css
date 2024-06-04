@@ -20,8 +20,9 @@
 
 .modal-content {
     background-color: #fefefe;
-    margin: 1% auto; /*bad margin*/
+    margin: 4% auto; /*bad margin*/
     padding: 20px;
+    padding-top: 10px;
     border: 1px solid #888;
     width: 80%;
 }
@@ -31,6 +32,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 
 .close:hover,

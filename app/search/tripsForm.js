@@ -4,12 +4,15 @@ import "./tripsForm.css";
 const TripForm = () => {
 
     const [title, setTitle] = useState('')
-    const [pickup, setPickup] = useState('')
-    const [dropoff, setDropoff] = useState('')
+    const [pickup, setPickup] = useState('Select Location')
+    const [dropoff, setDropoff] = useState('Select Destination')
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
     const [comment, setComment] = useState('')
     const [error, setError] = useState(null)
+
+    const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
+    const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,8 +34,8 @@ const TripForm = () => {
         if (response.ok) {
             setError(null)
             setTitle('')
-            setPickup('')
-            setDropoff('')
+            setPickup('Select Location')
+            setDropoff('Select Destination')
             setDate('')
             setTime('')
             setComment('')
@@ -51,21 +54,33 @@ const TripForm = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
             />
+            <label className="pickupDrop">
+                <div>
+                    <label>Pickup Location:</label>
+                    <select
+                        value={pickup}
+                        onChange={(e) => setPickup(e.target.value)}
+                    >
+                        <option value="Select Location">Select Location</option>
+                        {locations.map((location, index) => (
+                            <option key={index} value={location}>{location}</option>
+                        ))}
+                    </select>
+                </div>
 
-            <label>Pickup Location:</label>
-            <input
-                type="text"
-                onChange={(e) => setPickup(e.target.value)}
-                value={pickup}
-            />
-
-            <label>Dropoff Location:</label>
-            <input
-                type="text"
-                onChange={(e) => setDropoff(e.target.value)}
-                value={dropoff}
-            />
-
+                <div>
+                    <label>Dropoff Location:</label>
+                    <select
+                        value={dropoff}
+                        onChange={(e) => setDropoff(e.target.value)}
+                    >
+                        <option value="Select Destination">Select Destination</option>
+                        {destinations.map((destination, index) => (
+                            <option key={index} value={destination}>{destination}</option>
+                        ))}
+                    </select>
+                </div>
+            </label>
             <label>Date:</label>
             <input
                 type="text"
