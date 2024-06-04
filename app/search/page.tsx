@@ -1,9 +1,12 @@
-"use client";
+"use client"
 
 import { useState, useEffect, useRef } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../Navbar";
 import "./styles.css";
+import Modal from "./Modal";
+import TripForm from "./tripsForm"
+
 
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
@@ -120,10 +123,11 @@ function DropdownSearch({ onFindRides }) {
             </div>
 
             <div className="button-group">
-                <button className="search-button" onClick={handleFindRides}>
+                <button className="btn search-button" onClick={handleFindRides}>
                     Find rides
                 </button>
-                <button className="search-button">
+                
+                <button className="btn search-button" onClick={() => setShowModal(true)}>
                     Create a ride
                 </button>
             </div>
@@ -192,6 +196,7 @@ export default function Page() {
                                             </p>
                                             <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
                                         </div>
+
                                     </div>
                                 ))}
                             </div>
@@ -199,6 +204,9 @@ export default function Page() {
                     </div>
                 </div>
             </div>
+            <Modal show={showModal} handleClose={handleCloseModal}>
+                <TripForm />
+            </Modal>
         </>
     );
 }
