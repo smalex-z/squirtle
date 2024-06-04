@@ -11,7 +11,7 @@ import TripForm from "./tripsForm"
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 
-function DropdownSearch({ onFindRides }) {
+function DropdownSearch({ onFindRides, setShowModal }) {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [selectedOption1, setSelectedOption1] = useState("Select location");
     const [selectedOption2, setSelectedOption2] = useState("Select destination");
@@ -138,6 +138,8 @@ function DropdownSearch({ onFindRides }) {
 export default function Page() {
     const [trips, setTrips] = useState([]);
     const [filteredTrips, setFilteredTrips] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
 
     useEffect(() => {
         const fetchTrips = async () => {
@@ -154,6 +156,10 @@ export default function Page() {
 
         fetchTrips();
     }, []);
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
     const handleFindRides = (location, destination) => {
         if (location !== "Select location" && destination !== "Select destination") {
@@ -178,7 +184,7 @@ export default function Page() {
                                     <h2>Get a ride:</h2>
                                 </div>
                                 <div className="row">
-                                    <DropdownSearch onFindRides={handleFindRides} />
+                                    <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
                                 </div>
                             </div>
                         </div>
