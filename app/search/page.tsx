@@ -1,14 +1,17 @@
-"use client";
+"use client"
 
 import { useState, useEffect, useRef } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../Navbar";
 import "./styles.css";
+import Modal from "./Modal";
+import TripForm from "./tripsForm"
+
 
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 
-function DropdownSearch() {
+function DropdownSearch({ setShowModal }) {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [selectedOption1, setSelectedOption1] = useState("Select location");
     const [selectedOption2, setSelectedOption2] = useState("Select destination");
@@ -116,10 +119,11 @@ function DropdownSearch() {
             </div>
 
             <div className="button-group">
-                <button className="search-button">
+                <button className="btn search-button">
                     Find rides
                 </button>
-                <button className="search-button">
+                
+                <button className="btn search-button" onClick={() => setShowModal(true)}>
                     Create a ride
                 </button>
             </div>
@@ -129,56 +133,64 @@ function DropdownSearch() {
 
 export default function Page() {
     const [trips, setTrips] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const fetchTrips = async() => {
+        const fetchTrips = async () => {
             const response = await fetch("http://localhost:4000/api/trips");
             const data = await response.json();
             console.log(data);
 
-            if(response.ok) {
+            if (response.ok) {
                 console.log("Success");
                 setTrips(data.trips);
-            } 
-
-        }
+            }
+        };
 
         fetchTrips();
-    }, [])
+    }, []);
 
     useEffect(() => {
-        console.log("Trips: ", trips)
-    })
+        console.log("Trips: ", trips);
+    }, [trips]);
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
     return (
         <>
-        <div className="ride-container">
-            <Navbar />
-            <div className="container my-3 mb-5">
-                <div className="row h-100">
-                    <div className="col-3">
-                        <div className="row ride-search py-3">
-                            <div className="row text-container">
-                                <h2>Get a ride:</h2>
-                            </div>
-                            <div className="row">
-                                <DropdownSearch />
+            <div className="ride-container">
+                <Navbar />
+                <div className="container my-3 mb-5">
+                    <div className="row h-100">
+                        <div className="col-3">
+                            <div className="row ride-search py-3">
+                                <div className="row text-container">
+                                    <h2>Get a ride:</h2>
+                                </div>
+                                <div className="row">
+                                    <DropdownSearch setShowModal={setShowModal} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-9 h-100">
-                        <div className="row find-ride ms-5 py-3">
-                            {trips && trips.map((trip) => (
-                                <div className="card trip_card">
-                                    <h4><b>John Doe</b></h4>
-                                    <p key={trip._id}>{trip.title}</p>
-                                </div>
-                            ))}
+                        <div className="col-9 h-100">
+                            <div className="row find-ride ms-5 py-3">
+                                {trips && trips.map((trip) => (
+                                    <div className="card trip_card" key={trip._id}>
+                                        <h4><b>John Doe</b></h4>
+                                        <p>{trip.title}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <Modal show={showModal} handleClose={handleCloseModal}>
+                <TripForm />
+            </Modal>
         </>
     );
 }
