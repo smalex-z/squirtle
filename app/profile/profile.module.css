@@ -1,74 +1,49 @@
 .profileContainer {
-  background: #f2f2f2;
-  border-radius: 0.625em;
-  box-shadow: 0 0 0.625em rgba(0, 0, 0, 0.2);
-  padding: 1.25em;
-  max-width: 62.5em;
-  margin: 0 auto;
-  text-align: left;
-  flex-grow: 1;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .profilePicture {
   border-radius: 50%;
-  width: 9.375em;
-  height: 9.375em;
-  object-fit: cover;
 }
 
 .profileInfo {
-  margin-top: 1.25em;
+  margin-top: 20px;
 }
 
 .profileInfo h1 {
-  margin: 0;
+  margin: 10px 0;
+  font-size: 2em;
 }
 
 .profileInfo h3 {
-  margin: 0.3125em 0;
-  color: #f2f2f2;
+  margin: 5px 0;
+  font-size: 1.2em;
+  color: #ccc;
 }
 
 .profileInfo p {
-  margin: 0.3125em 0;
-  color: #f2f2f2;
-}
-
-.profileInfo input {
-  display: block;
-  margin-top: 0.625em;
+  margin: 10px 0;
+  font-size: 1em;
 }
 
 .profileInfo button {
-  display: block;
-  margin-top: 0.625em;
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.myRides {
-  margin-top: 1.25em;
-}
-
-.ride {
-  border: 0.0625em solid #ddd;
-  border-radius: 0.625em;
-  padding: 0.625em;
-  margin-bottom: 0.625em;
-}
-
-.ride h2 {
-  margin: 0;
-}
-
-.ride p {
-  margin: 0.3125em 0;
-  color: #666;
-}
-
-.profileInfo input[type="password"] {
-  display: block;
-  margin-top: 0.625em;
-  border: 0.0625em solid #ddd;
-  border-radius: 0.3125em;
-  padding: 0.625em;
-  transition: all 0.3s ease;
+.profileInfo button:hover {
+  background-color: #333;
 }
