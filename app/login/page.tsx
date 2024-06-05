@@ -26,6 +26,8 @@ export default function AuthPanel() {
         const data = await response.json();
         if (data.success) {
             console.log('Login successful!');
+            localStorage.setItem('token', data.token);
+            window.location.href = '/';
         } else {
             console.log('Login failed!');
         }
@@ -38,13 +40,15 @@ export default function AuthPanel() {
         const lastName = event.target.lastName.value;
         const username = event.target.username.value;
         const password = event.target.password.value;
+        const email = event.target.email.value;
+        const phoneNumber = event.target.phoneNumber.value;
 
         const response = await fetch('http://localhost:4000/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ firstName, lastName, username, password }),
+            body: JSON.stringify({ firstName, lastName, username, password, email, phoneNumber }),
         });
 
         if (!response.ok) {
@@ -60,8 +64,6 @@ export default function AuthPanel() {
             console.log('Signup failed!');
         }
     };
-
-
 
     return (
         <div className="home-container">
@@ -121,6 +123,8 @@ export default function AuthPanel() {
                                             <form method="post" className="w-100" onSubmit={handleSignup}>
                                                 <p><input type="text" placeholder="First Name:" name="firstName" id="id_firstname" className={styles.formInput} /></p>
                                                 <p><input type="text" placeholder="Last Name:" name="lastName" id="id_lastname" className={styles.formInput} /></p>
+                                                <p><input type="email" placeholder="Email:" name="email" id="id_email" className={styles.formInput} /></p>
+                                                <p><input type="tel" placeholder="Phone Number:" name="phoneNumber" id="id_phoneNumber" className={styles.formInput} /></p>
                                                 <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>

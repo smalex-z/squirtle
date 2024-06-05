@@ -207,7 +207,6 @@ export default function Page() {
                                             </p>
                                             <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
                                         </div>
-
                                     </div>
                                 ))}
                             </div>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { type } = require('os');
 
 const Schema = mongoose.Schema;
 
@@ -20,7 +21,17 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
 }, { timestamps: true });
 
 // i hash the pass before saving into the database
