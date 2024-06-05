@@ -157,6 +157,11 @@ export default function Page() {
         fetchTrips();
     }, []);
 
+    const handleAddTrip = (newTrip) => {
+        setTrips([...trips, newTrip]);
+        setFilteredTrips([...trips, newTrip]);
+    };
+
     const handleCloseModal = () => {
         setShowModal(false);
     };
@@ -211,7 +216,7 @@ export default function Page() {
                 </div>
             </div>
             <Modal show={showModal} handleClose={handleCloseModal}>
-                <TripForm />
+                <TripForm onAddTrip={handleAddTrip} handleCloseModal={handleCloseModal}/>
             </Modal>
         </>
     );
