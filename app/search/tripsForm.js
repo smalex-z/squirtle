@@ -17,7 +17,9 @@ const TripForm = ({ onAddTrip, handleCloseModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const trip = { title, pickup, dropoff, date, time, comment }
+        const userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
+        console.log('userId:', userId)
+        const trip = { title, pickup, dropoff, date, time, comment, owner: userId }
 
         const response = await fetch('http://localhost:4000/api/trips', {
             method: 'POST',

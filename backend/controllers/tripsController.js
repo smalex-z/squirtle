@@ -29,10 +29,10 @@ const getTrip = async (req,res) => {
 
 // post (create) a new trip
 const createTrip = async (req,res) => {
-    const {title, pickup, dropoff, date, time, comment} = req.body
+    const {title, pickup, dropoff, date, time, comment, owner} = req.body
 
     try{
-        const trip = await Trip.create({title, pickup, dropoff, date, time, comment})
+        const trip = await Trip.create({title, pickup, dropoff, date, time, comment, owner})
         res.status(200).json({trip})
     }catch(err){
         res.status(400).json({message: err.message})
