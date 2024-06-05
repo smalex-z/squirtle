@@ -81,19 +81,25 @@ const TripForm = () => {
                     </select>
                 </div>
             </label>
-            <label>Date:</label>
-            <input
-                type="text"
-                onChange={(e) => setDate(e.target.value)}
-                value={date}
-            />
 
-            <label>Time:</label>
-            <input
-                type="text"
-                onChange={(e) => setTime(e.target.value)}
-                value={time}
-            />
+            <label className="pickupDrop">
+                <div>
+                    <label>Date:</label>
+                    <input
+                        type="date"
+                        onChange={(e) => setDate(e.target.value)}
+                        value={date}
+                    />
+                </div>
+                <div>
+                    <label>Time:</label>
+                    <input
+                        type="time"
+                        onChange={(e) => setTime(e.target.value)}
+                        value={time}
+                    />
+                </div>
+            </label>
 
             <label>Comment:</label>
             <input
