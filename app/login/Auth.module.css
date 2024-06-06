@@ -1,0 +1,63 @@
+/* styles/Auth.module.css */
+
+.contentbody {
+  background-color: rgba(126, 126, 126, 0.142);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row{
+  width: 100%;
+}
+
+.contentBox {
+  width: 450px;
+}
+
+.logo {
+  width: 450px;
+}
+
+.authPanel {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border: rgb(238, 238, 238) solid 2px;
+  border-radius: 5px;
+}
+
+.navTabs .navLink {
+  width: 100%;
+  background-color: rgba(189, 189, 189, 0.265);
+}
+
+.navItem {
+  width: 50%;
+  text-align: center;
+}
+
+.tabPane {
+  flex-direction: column;
+}
+
+.formInput {
+  font-size: 16px;
+  color: #74747490;
+  display: block;
+  width: 100%;
+  padding: 10px 1px;
+  border: 0;
+  border-bottom: 1px solid #74747490;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.formInput:focus {
+  color: #000; /* Change the text color when focused */
+  border-bottom: 1px solid #000; /* Change the border color when focused */
+}

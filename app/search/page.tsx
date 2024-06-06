@@ -1,14 +1,17 @@
-"use client";
+"use client"
 
 import { useState, useEffect, useRef } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../Navbar";
 import "./styles.css";
+import Modal from "./Modal";
+import TripForm from "./tripsForm"
+
 
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 
-function DropdownSearch() {
+function DropdownSearch({ onFindRides, setShowModal }) {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [selectedOption1, setSelectedOption1] = useState("Select location");
     const [selectedOption2, setSelectedOption2] = useState("Select destination");
@@ -46,19 +49,23 @@ function DropdownSearch() {
     const handleOptionSelect = (dropdownId, option) => {
         if (dropdownId === 1) {
             if (selectedOption1 === option) {
-                setSelectedOption1("Select location"); // Revert to the default text
+                setSelectedOption1("Select location");
             } else {
                 setSelectedOption1(option);
             }
             setOpenDropdown(null);
         } else {
             if (selectedOption2 === option) {
-                setSelectedOption2("Select destination"); // Revert to the default text
+                setSelectedOption2("Select destination");
             } else {
                 setSelectedOption2(option);
             }
             setOpenDropdown(null);
         }
+    };
+
+    const handleFindRides = () => {
+        onFindRides(selectedOption1, selectedOption2);
     };
 
     return (
@@ -116,10 +123,11 @@ function DropdownSearch() {
             </div>
 
             <div className="button-group">
-                <button className="search-button">
+                <button className="btn search-button" onClick={handleFindRides}>
                     Find rides
                 </button>
-                <button className="search-button">
+                
+                <button className="btn search-button" onClick={() => setShowModal(true)}>
                     Create a ride
                 </button>
             </div>
@@ -128,31 +136,87 @@ function DropdownSearch() {
 }
 
 export default function Page() {
+    const [trips, setTrips] = useState([]);
+    const [filteredTrips, setFilteredTrips] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+
+    useEffect(() => {
+        const fetchTrips = async () => {
+            const response = await fetch("http://localhost:4000/api/trips");
+            const data = await response.json();
+            console.log(data);
+
+            if (response.ok) {
+                console.log("Success");
+                setTrips(data.trips);
+                setFilteredTrips(data.trips);
+            }
+        };
+
+        fetchTrips();
+    }, []);
+
+    const handleAddTrip = (newTrip) => {
+        setTrips([...trips, newTrip]);
+        setFilteredTrips([...trips, newTrip]);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleFindRides = (location, destination) => {
+        if (location !== "Select location" && destination !== "Select destination") {
+            const filtered = trips.filter(
+                (trip) => trip.pickup === location && trip.dropoff === destination
+            );
+            setFilteredTrips(filtered);
+        } else {
+            setFilteredTrips(trips);
+        }
+    };
+
     return (
         <>
-        <div className="ride-container">
-            <Navbar />
-            <div className="container my-3 mb-5">
-                <div className="row h-100">
-                    <div className="col-3">
-                        <div className="row ride-search py-3">
-                            <div className="row text-container">
-                                <h2>Get a ride:</h2>
-                            </div>
-                            <div className="row">
-                                <DropdownSearch />
+            <div className="ride-container">
+                <Navbar />
+                <div className="container my-3 mb-5">
+                    <div className="row" style={{ alignItems: 'start' }}>
+                        <div className="col-3">
+                            <div className="row ride-search py-3">
+                                <div className="row text-container">
+                                    <h2>Get a ride:</h2>
+                                </div>
+                                <div className="row">
+                                    <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col-9 h-100">
-                        <div className="row find-ride ms-5 py-3">
-                            <h1>Choose a ride:</h1>
-
+                        <div className="col-9 rounded">
+                            <div className="row find-ride ms-5 py-3 rounded">
+                                {filteredTrips && filteredTrips.map((trip) => (
+                                    <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
+                                        <div className="card-body">
+                                            <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
+                                            <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
+                                                <strong>Pickup:</strong> {trip.pickup}<br />
+                                                <strong>Dropoff:</strong> {trip.dropoff}<br />
+                                                <strong>Date:</strong> {trip.date}<br />
+                                                <strong>Time:</strong> {trip.time}
+                                            </p>
+                                            <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Modal show={showModal} handleClose={handleCloseModal}>
+                <TripForm onAddTrip={handleAddTrip} handleCloseModal={handleCloseModal}/>
+            </Modal>
         </>
     );
 }
