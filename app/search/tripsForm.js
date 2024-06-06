@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import "./tripsForm.css";
 
-const TripForm = () => {
+const TripForm = ({ onAddTrip, handleCloseModal }) => {
 
     const [title, setTitle] = useState('')
     const [pickup, setPickup] = useState('Select Location')
@@ -17,7 +17,9 @@ const TripForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const trip = { title, pickup, dropoff, date, time, comment }
+        const userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
+        console.log('userId:', userId)
+        const trip = { title, pickup, dropoff, date, time, comment, owner: userId }
 
         const response = await fetch('http://localhost:4000/api/trips', {
             method: 'POST',
@@ -39,7 +41,9 @@ const TripForm = () => {
             setDate('')
             setTime('')
             setComment('')
-            console.log('new workout added:', json)
+            console.log('new trip added:', json)
+            onAddTrip(json.trip);
+            handleCloseModal(); // Close the modal after successful submission
         }
 
     }
@@ -108,7 +112,10 @@ const TripForm = () => {
                 value={comment}
             />
 
-            <button>Add Trip</button>
+            <div className="button-group-2">
+                <button className="btn btn-success formbtns" type="submit">Add Trip</button>
+                <button className="btn btn-danger formbtns" type="button" onClick={handleCloseModal}>Cancel</button>
+            </div>
             {error && <div className="error">{error}</div>}
         </form>
     )

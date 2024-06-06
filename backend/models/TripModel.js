@@ -26,8 +26,17 @@ const tripSchema = new Schema({
     comment: {
         type: String,
         required: false
-    }
-    // add owner and users going on trip
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: false
+    },
+    riders: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: false
+    }]
 
 }, {timestamps: true}) 
 

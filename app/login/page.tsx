@@ -26,6 +26,7 @@ export default function AuthPanel() {
         const data = await response.json();
         if (data.success) {
             console.log('Login successful!');
+            localStorage.setItem('userId', data.userId); // store the user id in storage
             localStorage.setItem('token', data.token);
             window.location.href = '/';
         } else {

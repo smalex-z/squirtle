@@ -30,6 +30,22 @@ form button {
   cursor: pointer;
 }
 
+.button-group-2 {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
+.formbtns {
+  flex: .1;
+  margin: 0 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
+
 .pickupDrop {
   display: flex;
   justify-content: space-between;
