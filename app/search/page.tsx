@@ -196,6 +196,8 @@ export default function Page() {
                 // Update the trips and filteredTrips state with the updated trip
                 setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
                 setFilteredTrips(filteredTrips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+
+                fetchTrips();
             } else {
                 console.error('Error joining the trip', response.statusText);
             }
@@ -204,6 +206,7 @@ export default function Page() {
         }
     };
     
+    const userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
 
     return (
         <>
@@ -234,6 +237,7 @@ export default function Page() {
                                                     onClick={() => handleJoinTrip(trip._id)}
                                                     className="search-button" 
                                                     style={{ textDecoration: 'none' }}
+                                                    disabled={trip.riders.includes(userId)}
                                                 >
                                                     Join Trip
                                                 </button>                                            </div>

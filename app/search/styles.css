@@ -135,6 +135,14 @@ div.sticky {
     width: calc(50% - 10px);
 }
 
+.search-button:disabled {
+    background-color: #494949;
+    cursor: not-allowed;
+}
+.search-button:disabled:hover {
+    background-color: #494949;
+}
+
 .search-button:hover {
     background-color: #2980b9;
 }
