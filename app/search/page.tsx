@@ -196,8 +196,6 @@ export default function Page() {
                 // Update the trips and filteredTrips state with the updated trip
                 setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
                 setFilteredTrips(filteredTrips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
-
-                fetchTrips();
             } else {
                 console.error('Error joining the trip', response.statusText);
             }
