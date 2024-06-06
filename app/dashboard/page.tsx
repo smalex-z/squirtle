@@ -10,14 +10,16 @@ export default function Page() {
 
   useEffect(() => {
     const fetchTrips = async () => {
-        const response = await fetch("http://localhost:4000/api/trips");
-        const data = await response.json();
-        console.log(data);
+      const userId = localStorage.getItem('userId');
+      const response = await fetch("http://localhost:4000/api/trips");
+      const data = await response.json();
+      console.log(data);
 
-        if (response.ok) {
-            console.log("Success");
-            setUpcomingTrips(data.trips);
-        }
+      if (response.ok) {
+          console.log("Success");
+          const userTrips = data.trips.filter(trip => trip.owner === userId);
+          setUpcomingTrips(userTrips);
+      }
     };
 
     fetchTrips();
