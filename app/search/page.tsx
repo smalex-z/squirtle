@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import TripForm from "./tripsForm"
 
 
+
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 
@@ -176,6 +177,34 @@ export default function Page() {
         }
     };
 
+    const handleJoinTrip = async (tripId) => {
+        try {
+            const userId = localStorage.getItem('userId');
+
+            const response = await fetch(`http://localhost:4000/api/trips/${tripId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ riderId: userId }),
+            });
+    
+            if (response.ok) {
+                const updatedTrip = await response.json();
+                console.log('Successfully joined the trip', updatedTrip);
+    
+                // Update the trips and filteredTrips state with the updated trip
+                setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+                setFilteredTrips(filteredTrips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+            } else {
+                console.error('Error joining the trip', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error joining the trip', error);
+        }
+    };
+    
+
     return (
         <>
             <div className="ride-container">
@@ -201,8 +230,13 @@ export default function Page() {
                                                     <strong>Date:</strong> {trip.date}<br />
                                                     <strong>Time:</strong> {trip.time}
                                                 </p>
-                                                <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
-                                            </div>
+                                                <button 
+                                                    onClick={() => handleJoinTrip(trip._id)}
+                                                    className="search-button" 
+                                                    style={{ textDecoration: 'none' }}
+                                                >
+                                                    Join Trip
+                                                </button>                                            </div>
                                         </div>
                                     ))}
                             </div>
