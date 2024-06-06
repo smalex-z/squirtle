@@ -8,6 +8,7 @@ import Navbar from '../Navbar';
 
 export default function AuthPanel() {
     const [activeTab, setActiveTab] = useState('login');
+    const [error, setError] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -45,6 +46,12 @@ export default function AuthPanel() {
         const phoneNumber = event.target.phoneNumber.value;
 
         console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, email, phoneNumber })}`)
+
+        // Check if any fields are empty
+        if (!firstName || !lastName || !username || !password || !email || !phoneNumber) {
+            setError("All fields are required.");
+            return;
+        }
 
         const response = await fetch('http://localhost:4000/api/auth/signup', {
             method: 'POST',
@@ -131,6 +138,7 @@ export default function AuthPanel() {
                                                 <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>
+                                                {error && <div className="error">{error}</div>}
                                             </form>
                                         </div>
                                     </div>

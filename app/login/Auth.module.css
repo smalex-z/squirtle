@@ -61,3 +61,17 @@
   color: #000; /* Change the text color when focused */
   border-bottom: 1px solid #000; /* Change the border color when focused */
 }
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
