@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "../Navbar";
 import "./styles.css";
 import Modal from "./Modal";
-import TripForm from "./tripsForm"
-
+import TripForm from "./tripsForm";
 
 const locations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
 const destinations = ["UCLA", "USC", "LAX", "Santa Monica", "Sawtelle", "Koreatown", "Little Tokyo", "Union Station"];
@@ -139,7 +138,6 @@ export default function Page() {
     const [trips, setTrips] = useState([]);
     const [filteredTrips, setFilteredTrips] = useState([]);
     const [showModal, setShowModal] = useState(false);
-
 
     useEffect(() => {
         const fetchTrips = async () => {
