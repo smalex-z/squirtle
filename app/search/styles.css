@@ -2,73 +2,72 @@ body {
     background: radial-gradient(circle, #a7a7a7, #ffffff);
 }
 
-.ride-container{
+.ride-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.container{
+.container {
     max-width: none;
     width: 90vw;
     margin: 0 5vw;
     flex-grow: 1;
 }
 
-.ride-search{
+.ride-search {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: .5rem;
-    border-style: solid;
-    border-color: #cecece;
-    border-width: 2px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
+
 
 .text-container {
     text-align: center;
-    color: rgb(0, 0, 0);
-    font-family: 'Arial', sans-serif;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-
-.find-ride{
+.find-ride {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-gap: 1rem;
     padding: 1rem;
-
     background-color: rgb(233, 230, 230);
     box-shadow: 0px 9px 30px rgba(15, 15, 15, 0.616);
     height: 100%;
 }
 
-@media screen and (max-width: 1024px)
-{
-    .find-ride{
+@media screen and (max-width: 1024px) {
+    .find-ride {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media screen and (max-width: 768px){
-    .find-ride{
+@media screen and (max-width: 768px) {
+    .find-ride {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.trip_card{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.trip_card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     border-radius: 5px;
 }
-
-
-
-
-
-/* Custom styles for DropdownSearch component */
 
 .search-bar-container {
     display: flex;
@@ -81,7 +80,7 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    position: relative; /* Ensure the dropdown menu positions correctly */
+    position: relative;
 }
 
 .search-input {
@@ -91,7 +90,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: white;
-    color: black; /* Change text color to black */
+    color: black;
     cursor: pointer;
     position: relative;
 }
@@ -102,13 +101,13 @@ body {
 
 .dropdown-wrapper {
     flex-grow: 1;
-    margin-right: -10px; /* Adjust the space between dropdown bars */
+    margin-right: -10px;
 }
 
 .button-group {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    width: 100%;
 }
 
 .search-button {
@@ -119,6 +118,7 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: calc(50% - 10px);
 }
 
 .search-button:hover {
@@ -150,14 +150,14 @@ body {
     padding: 10px;
     z-index: 10;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: calc(100% - 20px); /* Adjust width to match dropdown bar */
-    top: calc(100% + 1px); /* This will position the dropdown box just below the dropdown bar */
+    width: calc(100% - 20px);
+    top: calc(100% + 1px);
     margin-top: -2px;
     list-style-type: none;
     padding-left: 0;
-    color:black;
+    color: black;
     text-align: left;
-    font-family: 'Arial', sans-serif; /* Ensure consistent font */
+    font-family: 'Arial', sans-serif;
 }
 
 .dropdown-option {
