@@ -181,33 +181,31 @@ export default function Page() {
             <div className="ride-container">
                 <Navbar />
                 <div className="container my-3 mb-5">
-                    <div className="row" style={{ alignItems: 'start' }}>
-                        <div className="col-12 ride-search py-3 mb-4">
-                            <div className="row text-container">
-                                <h2>Get Your Trip</h2>
+                        <div className="row stick-box" style={{ justifyContent: 'center'}}>
+                            <div className="col ride-search search-box py-3 sticky">
+                                <div className="row text-container">
+                                    <h2>Get Your Trip</h2>
+                                </div>
+                                <div className="row">
+                                    <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
+                                </div>
                             </div>
-                            <div className="row">
-                                <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
-                            </div>
-                        </div>
-                        <div className="col-12 rounded">
-                            <div className="row find-ride ms-5 py-3 rounded">
+                            <div className="col ride-search map-box find-ride py-3">
                                 {filteredTrips && filteredTrips.map((trip) => (
-                                    <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
-                                        <div className="card-body">
-                                            <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
-                                            <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
-                                                <strong>Pickup:</strong> {trip.pickup}<br />
-                                                <strong>Dropoff:</strong> {trip.dropoff}<br />
-                                                <strong>Date:</strong> {trip.date}<br />
-                                                <strong>Time:</strong> {trip.time}
-                                            </p>
-                                            <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
+                                        <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
+                                            <div className="card-body">
+                                                <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
+                                                <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
+                                                    <strong>Pickup:</strong> {trip.pickup}<br />
+                                                    <strong>Dropoff:</strong> {trip.dropoff}<br />
+                                                    <strong>Date:</strong> {trip.date}<br />
+                                                    <strong>Time:</strong> {trip.time}
+                                                </p>
+                                                <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -15,6 +15,12 @@ body {
     flex-grow: 1;
 }
 
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
+}
+
 .ride-search {
     display: flex;
     flex-direction: column;
@@ -24,9 +30,18 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    width: 50%;
-    margin: 0 auto;
     margin-bottom: 20px;
+}
+
+.search-box{
+    flex-grow: .23;
+    height: fit-content;
+}
+
+
+.map-box{
+    margin-left: 40px;
+    flex-grow: .77;
 }
 
 
@@ -42,7 +57,7 @@ body {
 
 .find-ride {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-gap: 1rem;
     padding: 1rem;
@@ -53,13 +68,13 @@ body {
 
 @media screen and (max-width: 1024px) {
     .find-ride {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
     .find-ride {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -73,7 +88,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
 }
 
 .search-bar {
