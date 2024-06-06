@@ -12,8 +12,25 @@ const Profile = (props: UserProfileProps) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [trips, setTrips] = useState([]);
+  const [profile, setProfile] = useState([]);
+
 
   useEffect(() => {
+    const fetchProfile = async () => {
+      console.log("Fetching Profile");
+      const userId = localStorage.getItem('userId');
+      const response = await fetch(`http://localhost:4000/api/auth/${userId}`);
+      const data = await response.json();
+      
+      console.log(data);
+      if (response.ok) {
+        console.log("Fetch User Success");
+        setProfile(data.user);
+      } else {
+        console.error('Error fetching profile data:', response.statusText);
+      }
+    };
+    
     const fetchTrips = async () => {
       const userId = localStorage.getItem('userId');
       const response = await fetch("http://localhost:4000/api/trips");
@@ -21,14 +38,17 @@ const Profile = (props: UserProfileProps) => {
       console.log(data);
 
       if (response.ok) {
-        console.log("Success");
+        console.log("Fetch Trip Success");
         const userTrips = data.trips.filter(trip => trip.owner === userId);
         setTrips(userTrips);
       }
     };
 
+    fetchProfile();
     fetchTrips();
   }, []);
+
+  
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -56,6 +76,7 @@ const Profile = (props: UserProfileProps) => {
 
         // Update the trips and filteredTrips state with the updated trip
         setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+        window.location.reload();
       } else {
         console.error('Error deleting the trip', response.statusText);
       }
@@ -76,9 +97,11 @@ const Profile = (props: UserProfileProps) => {
               style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <Image src={props.profilePictureUrl} alt="Profile Picture" className="profilePicture" width={150} height={150} />
               <div className="profileInfo">
-                <h1>{props.name}</h1>
-                <h3>@{props.username}</h3>
-                <p>{props.bio}</p>
+                <h1>{profile.firstName} {profile.lastName}</h1>
+                <h3>@{profile.username}</h3>
+                <p>📱{profile.phoneNumber}</p>
+                <p>📧{profile.email}</p>
+
                 <button className="btn btn-primary" onClick={openModal}>Edit Account</button>
               </div>
             </div>
