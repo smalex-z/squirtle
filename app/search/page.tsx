@@ -171,6 +171,16 @@ export default function Page() {
                 (trip) => trip.pickup === location && trip.dropoff === destination
             );
             setFilteredTrips(filtered);
+        } else if (location !== "Select location") {
+            const filtered = trips.filter(
+                (trip) => trip.pickup === location
+            );
+            setFilteredTrips(filtered);
+        } else if (location !== "Select location") {
+            const filtered = trips.filter(
+                (trip) => trip.dropoff === destination
+            );
+            setFilteredTrips(filtered);
         } else {
             setFilteredTrips(trips);
         }
