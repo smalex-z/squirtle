@@ -3,16 +3,21 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
-    const { firstName, lastName, username, password } = req.body;
+    console.log("here2")
+    const { firstName, lastName, username, password, email, phoneNumber } = req.body;
 
     try {
+        console.log("here3")
         const userExists = await User.findOne({ username });
         if (userExists) {
             return res.status(400).json({ success: false, message: 'Username already exists' });
         }
 
-        const newUser = new User({ firstName, lastName, username, password });
+        const newUser = new User({ firstName, lastName, username, password, email, phoneNumber });
+        console.log("here412341234")
+        console.log(JSON.stringify(newUser))
         await newUser.save();
+        console.log("here5")
 
         res.status(201).json({ success: true, message: 'User registered successfully' });
     } catch (err) {
