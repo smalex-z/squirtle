@@ -44,6 +44,8 @@ export default function AuthPanel() {
         const email = event.target.email.value;
         const phoneNumber = event.target.phoneNumber.value;
 
+        console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, email, phoneNumber })}`)
+
         const response = await fetch('http://localhost:4000/api/auth/signup', {
             method: 'POST',
             headers: {
