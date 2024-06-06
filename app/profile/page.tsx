@@ -38,6 +38,32 @@ const Profile = (props: UserProfileProps) => {
     setIsModalOpen(false);
   };
 
+  const handleDeleteTrip = async (tripId) => {
+    try {
+      const userId = localStorage.getItem('userId');
+
+      const response = await fetch(`http://localhost:4000/api/trips/${tripId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ riderId: userId }),
+      });
+
+      if (response.ok) {
+        const updatedTrip = await response.json();
+        console.log('Successfully deleting the trip', updatedTrip);
+
+        // Update the trips and filteredTrips state with the updated trip
+        setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+      } else {
+        console.error('Error deleting the trip', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting the trip', error);
+    }
+  };
+
   return (
     <>
       <div className="home-container">
@@ -59,31 +85,27 @@ const Profile = (props: UserProfileProps) => {
           </div>
           <div className="col-8 myRides"
             style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-              {trips && trips.map((trip) => (
-                                    <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
-                                        <div className="card-body">
-                                            <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
-                                            <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
-                                                <strong>Pickup:</strong> {trip.pickup}<br />
-                                                <strong>Dropoff:</strong> {trip.dropoff}<br />
-                                                <strong>Date:</strong> {trip.date}<br />
-                                                <strong>Time:</strong> {trip.time}
-                                            </p>
-                                            <a href="#" className="search-button" style={{ textDecoration: 'none' }}>Join Trip</a>
-                                        </div>
-                                    </div>
-                                ))}
-          </div>
-          {/* 
-          <div className="myRides">
-            {props.rides.map((ride, index) => (
-              <div key={index} className="ride">
-                <h2>{ride.title}</h2>
-                <p>{ride.date}</p>
-                <p>{ride.dropOffLocation}</p>
+            {trips && trips.map((trip) => (
+              <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
+                <div className="card-body">
+                  <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
+                  <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
+                    <strong>Pickup:</strong> {trip.pickup}<br />
+                    <strong>Dropoff:</strong> {trip.dropoff}<br />
+                    <strong>Date:</strong> {trip.date}<br />
+                    <strong>Time:</strong> {trip.time}
+                  </p>
+                  <button
+                    onClick={() => handleDeleteTrip(trip._id)}
+                    className="btn btn-danger"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    Delete Trip
+                  </button>
+                </div>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </>
