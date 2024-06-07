@@ -1,5 +1,10 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/authController');
+const { 
+    registerUser, 
+    loginUser,
+    getUsers,
+    getUser
+} = require('../controllers/authController');
 
 const router = express.Router();
 
@@ -9,4 +14,10 @@ router.post('/signup', registerUser);
 // Login existing user
 router.post('/login', loginUser);
 
-module.exports = router;
+//get userinfo for a single user
+router.get('/', getUsers)
+
+//get userinfo for a single user
+router.get('/:id', getUser)
+
+module.exports = router

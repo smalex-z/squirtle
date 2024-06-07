@@ -84,6 +84,9 @@ div.sticky {
     border-radius: 5px;
 }
 
+
+/* Custom styles for DropdownSearch component */
+
 .search-bar-container {
     display: flex;
     flex-direction: column;
