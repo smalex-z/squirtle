@@ -67,11 +67,35 @@
   margin-top: 20px;
 }
 
+.loginerror {
+  color: red;
+  margin-top: 20px;
+}
+
 .errorBox {
   padding: 10px;
   background: #ffefef;
   border: 1px solid red; /* Ensure the border color is consistent with the background */
   color: red; /* Set text color to red */
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.success {
+  color: green;
+  margin-top: 20px;
+}
+
+.loginsuccess {
+  color: green;
+  margin-top: 20px;
+}
+
+.successBox {
+  padding: 10px;
+  background: #effff2;
+  border: 1px solid green; /* Ensure the border color is consistent with the background */
+  color: green; /* Set text color to red */
   border-radius: 4px;
   margin: 20px 0;
 }

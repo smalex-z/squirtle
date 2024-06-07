@@ -9,6 +9,9 @@ import Navbar from '../Navbar';
 export default function AuthPanel() {
     const [activeTab, setActiveTab] = useState('login');
     const [error, setError] = useState('');
+    const [loginerror, setLoginError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [loginsuccess, setLoginSuccess] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -29,9 +32,13 @@ export default function AuthPanel() {
             console.log('Login successful!');
             localStorage.setItem('userId', data.userId); // store the user id in storage
             localStorage.setItem('token', data.token);
+            setError("");
+            setLoginSuccess("Login successful!");
             window.location.href = '/';
         } else {
             console.log('Login failed!');
+            setLoginError("Incorrect username or password.");
+            return;
         }
     };
 
@@ -76,6 +83,9 @@ export default function AuthPanel() {
 
         if (data.success) {
             console.log('Signup successful!');
+            setError("");
+            setSuccess("Signup successful!");
+            window.location.href = '/';
         } else {
             console.log('Signup failed!');
         }
@@ -125,6 +135,8 @@ export default function AuthPanel() {
                                                 <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="login-btn" className="btn btn-info w-100 mt-4 mb-4">Login</button>
+                                                {loginerror && <div className={styles.errorBox}>{loginerror}</div>}
+                                                {loginsuccess && <div className={styles.successBox}>{loginsuccess}</div>}
                                             </form>
                                         </div>
                                     </div>
@@ -145,8 +157,8 @@ export default function AuthPanel() {
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Confirm Password:" name="conf_password" id="id_conf_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>
-                                                {/* Wrap error in a div with specific class */}
                                                 {error && <div className={styles.errorBox}>{error}</div>}
+                                                {success && <div className={styles.successBox}>{success}</div>}
                                             </form>
                                         </div>
                                     </div>
