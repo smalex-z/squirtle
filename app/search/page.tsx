@@ -107,13 +107,13 @@ function DropdownSearch({ onFindRides, setShowModal }) {
                         </button>
                         {openDropdown === 2 && (
                             <ul className="options-dropdown">
-                                {locations.map((location, index) => (
+                                {destinations.map((destination, index) => (
                                     <li
                                         key={index}
                                         className="dropdown-option"
-                                        onClick={() => handleOptionSelect(2, location)}
+                                        onClick={() => handleOptionSelect(2, destination)}
                                     >
-                                        {location}
+                                        {destination}
                                     </li>
                                 ))}
                             </ul>
@@ -124,11 +124,11 @@ function DropdownSearch({ onFindRides, setShowModal }) {
 
             <div className="button-group">
                 <button className="btn search-button" onClick={handleFindRides}>
-                    Find rides
+                    Find Rides
                 </button>
-                
+
                 <button className="btn search-button" onClick={() => setShowModal(true)}>
-                    Create a ride
+                    Create Ride
                 </button>
             </div>
         </div>
@@ -139,7 +139,6 @@ export default function Page() {
     const [trips, setTrips] = useState([]);
     const [filteredTrips, setFilteredTrips] = useState([]);
     const [showModal, setShowModal] = useState(false);
-
 
     useEffect(() => {
         const fetchTrips = async () => {
@@ -183,17 +182,15 @@ export default function Page() {
                 <Navbar />
                 <div className="container my-3 mb-5">
                     <div className="row" style={{ alignItems: 'start' }}>
-                        <div className="col-3">
-                            <div className="row ride-search py-3">
-                                <div className="row text-container">
-                                    <h2>Get a ride:</h2>
-                                </div>
-                                <div className="row">
-                                    <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
-                                </div>
+                        <div className="col-12 ride-search py-3 mb-4">
+                            <div className="row text-container">
+                                <h2>Get Your Trip</h2>
+                            </div>
+                            <div className="row">
+                                <DropdownSearch onFindRides={handleFindRides} setShowModal={setShowModal} />
                             </div>
                         </div>
-                        <div className="col-9 rounded">
+                        <div className="col-12 rounded">
                             <div className="row find-ride ms-5 py-3 rounded">
                                 {filteredTrips && filteredTrips.map((trip) => (
                                     <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
