@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.row{
+.row {
   width: 100%;
 }
 
@@ -67,11 +67,11 @@
   margin-top: 20px;
 }
 
-div.error {
+.errorBox {
   padding: 10px;
   background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
+  border: 1px solid red; /* Ensure the border color is consistent with the background */
+  color: red; /* Set text color to red */
   border-radius: 4px;
   margin: 20px 0;
 }

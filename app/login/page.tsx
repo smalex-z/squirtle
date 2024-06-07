@@ -45,7 +45,7 @@ export default function AuthPanel() {
         const email = event.target.email.value;
         const phoneNumber = event.target.phoneNumber.value;
 
-        console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, email, phoneNumber })}`)
+        console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, email, phoneNumber })}`);
 
         // Check if any fields are empty
         if (!firstName || !lastName || !username || !password || !email || !phoneNumber) {
@@ -138,7 +138,8 @@ export default function AuthPanel() {
                                                 <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>
-                                                {error && <div className="error">{error}</div>}
+                                                {/* Wrap error in a div with specific class */}
+                                                {error && <div className={styles.errorBox}>{error}</div>}
                                             </form>
                                         </div>
                                     </div>
