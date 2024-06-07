@@ -32,7 +32,7 @@ const createTrip = async (req,res) => {
     const {title, pickup, dropoff, date, time, comment, owner} = req.body
 
     try{
-        const trip = await Trip.create({title, pickup, dropoff, date, time, comment, owner})
+        const trip = await Trip.create({title, pickup, dropoff, date, time, comment, owner, riders: [owner]})
         res.status(200).json({trip})
     }catch(err){
         res.status(400).json({message: err.message})
@@ -85,11 +85,39 @@ const updateTrip = async (req, res) => {
     }
 };
 
+const leaveTrip = async (req, res) => {
+    const { id } = req.params;
+    const { riderId } = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'Trip not found Err1' });
+    }
+
+    try {
+        const trip = await Trip.findById(id);
+
+        if (!trip) {
+            return res.status(404).json({ message: 'Trip not found Err2' });
+        }
+
+        // Check if riderId is provided and if it's in the array
+        if (riderId && trip.riders.includes(riderId)) {
+            trip.riders = trip.riders.filter(id => id.toString() !== riderId);
+        }
+
+        await trip.save();
+
+        res.status(200).json({ trip });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
 
 module.exports = {
     getTrips, 
     getTrip, 
     createTrip,
     deleteTrip,
-    updateTrip
+    updateTrip,
+    leaveTrip
 }

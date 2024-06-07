@@ -4,8 +4,8 @@ const {
     getTrip,
     createTrip,
     deleteTrip,
-    updateTrip
-
+    updateTrip,
+    leaveTrip
 } = require('../controllers/tripsController')
 
 const router = express.Router()
@@ -25,5 +25,8 @@ router.delete('/:id', deleteTrip)
 
 // update a existing trip
 router.patch('/:id', updateTrip)
+
+router.patch('/:id/leave', leaveTrip)
+
 
 module.exports = router
