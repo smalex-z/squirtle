@@ -1,6 +1,8 @@
 const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose')
+
 
 const registerUser = async (req, res) => {
     const { firstName, lastName, username, password, email, phoneNumber } = req.body;
@@ -43,4 +45,30 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
+//get request for all user
+const getUsers = async (req,res) => {
+    try{
+        const users = await User.find({}).sort({createdAt: -1})
+        res.status(200).json({users})
+    }catch(err){
+        res.status(400).json({message: err.message})
+    }
+}
+
+//get request for a single user
+const getUser = async (req,res) => {
+    const {id} = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'User not found'})
+    }
+
+    const user = await User.findById(id)
+    
+    if(!user){
+        res.status(404).json({message: 'User not found'})
+    }
+
+    res.status(200).json({user})
+}
+
+module.exports = { registerUser, loginUser, getUsers, getUser };
