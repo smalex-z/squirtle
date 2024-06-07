@@ -67,8 +67,8 @@ This will download a set of `node_modules` for the backend server.
 Create a `.env` file in the `backend` folder with the following contents:
 ```plaintext
 PORT=4000
-MONGO_URI=[insert key]
-JWT_SECRET=[insert key]
+MONGO_URI=mongodb+srv://admin:admin@cluster0.uyzsxc1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+JWT_SECRET=1T69tOm+eGKj4aDFs6Irqcu8908dpoGvfsDANDk0UDMGD6CXXJGWiPh9EahJvPJk//bw1MQOZhiCBl40QUVbmA==
 ```
 * **MONGO_URI:** Obtain this from your MongoDB Atlas account or local MongoDB instance.
 
