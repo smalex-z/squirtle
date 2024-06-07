@@ -8,11 +8,17 @@ body {
     flex-direction: column;
 }
 
-.container {
+.custom-container {
     max-width: none;
     width: 90vw;
     margin: 0 5vw;
     flex-grow: 1;
+}
+
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
 }
 
 .ride-search {
@@ -24,11 +30,18 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    width: 50%;
-    margin: 0 auto;
     margin-bottom: 20px;
 }
 
+.search-box {
+    flex-grow: .23 !important;
+    height: fit-content;
+}
+
+.map-box {
+    margin-left: 40px;
+    flex-grow: .77 !important;
+}
 
 .text-container {
     text-align: center;
@@ -42,7 +55,7 @@ body {
 
 .find-ride {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     grid-gap: 1rem;
     padding: 1rem;
@@ -53,22 +66,44 @@ body {
 
 @media screen and (max-width: 1024px) {
     .find-ride {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
     .find-ride {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
+/* New styles for the overlay effect */
 .trip_card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
+    transition: background 0.3s, opacity 0.3s;
     border-radius: 5px;
+    position: relative;
+    cursor: pointer;
 }
 
+.trip_card.clicked {
+    background: rgba(255, 255, 255, 0.95);
+    transition: background 0.3s, opacity 0.3s; /* Added transition for overlay */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Added slight transparency for overlay effect */
+    color: rgb(0, 0, 0);
+    display: flex;
+    padding: 20px;
+    align-items: top;
+    border-radius: 5px;
+    transition: background 0.3s, opacity 0.3s; /* Added transition for overlay */
+}
 
 /* Custom styles for DropdownSearch component */
 
@@ -76,7 +111,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 600px;
 }
 
 .search-bar {
@@ -107,7 +141,7 @@ body {
     margin-right: -10px;
 }
 
-.button-group {
+.button-group-4 {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -122,6 +156,15 @@ body {
     border-radius: 4px;
     cursor: pointer;
     width: calc(50% - 10px);
+}
+
+.search-button:disabled {
+    background-color: #494949;
+    cursor: not-allowed;
+}
+
+.search-button:disabled:hover {
+    background-color: #494949;
 }
 
 .search-button:hover {

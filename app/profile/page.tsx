@@ -1,9 +1,10 @@
 "use client"
-import { useState, useEffect } from "react";
-import Image from 'next/image';
+import React, { useState, useEffect } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 import { UserProfileProps } from './type';
+import Image from 'next/image';
+
 
 import Navbar from '../Navbar';
 
@@ -15,39 +16,37 @@ const Profile = (props: UserProfileProps) => {
 
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      console.log("Fetching Profile");
-      const userId = localStorage.getItem('userId');
-      const response = await fetch(`http://localhost:4000/api/auth/${userId}`);
-      const data = await response.json();
-      
-      console.log(data);
-      if (response.ok) {
-        console.log("Fetch User Success");
-        setProfile(data.user);
-      } else {
-        console.error('Error fetching profile data:', response.statusText);
-      }
-    };
-    
-    const fetchTrips = async () => {
-      const userId = localStorage.getItem('userId');
-      const response = await fetch("http://localhost:4000/api/trips");
-      const data = await response.json();
-      console.log(data);
-
-      if (response.ok) {
-        console.log("Fetch Trip Success");
-        const userTrips = data.trips.filter(trip => trip.owner === userId);
-        setTrips(userTrips);
-      }
-    };
-
     fetchProfile();
     fetchTrips();
   }, []);
 
+  const fetchProfile = async () => {
+    console.log("Fetching Profile");
+    const userId = localStorage.getItem('userId');
+    const response = await fetch(`http://localhost:4000/api/auth/${userId}`);
+    const data = await response.json();
+    
+    console.log(data);
+    if (response.ok) {
+      console.log("Fetch User Success");
+      setProfile(data.user);
+    } else {
+      console.error('Error fetching profile data:', response.statusText);
+    }
+  };
   
+  const fetchTrips = async () => {
+    const userId = localStorage.getItem('userId');
+    const response = await fetch("http://localhost:4000/api/trips");
+    const data = await response.json();
+    console.log(data);
+
+    if (response.ok) {
+      console.log("Fetch Trip Success");
+      const userTrips = data.trips.filter(trip => trip.owner === userId);
+      setTrips(userTrips);
+    }
+  };
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -74,8 +73,8 @@ const Profile = (props: UserProfileProps) => {
         console.log('Successfully deleting the trip', updatedTrip);
 
         // Update the trips and filteredTrips state with the updated trip
-        setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
-        window.location.reload();
+        fetchTrips();
+        
       } else {
         console.error('Error deleting the trip', response.statusText);
       }
@@ -108,7 +107,7 @@ const Profile = (props: UserProfileProps) => {
           <div className="col-8 myRides"
             style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {trips && trips.map((trip) => (
-              <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
+              <div key={trip.id} className="card new-trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
                 <div className="card-body">
                   <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
                   <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>

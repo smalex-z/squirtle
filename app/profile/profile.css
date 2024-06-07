@@ -71,8 +71,6 @@
 }
 
 
-
-
 .ride h2 {
   margin: 0;
 }
@@ -106,18 +104,18 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .find-ride {
+  .myRides {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .find-ride {
+  .myRides {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-.trip_card {
+.new-trip_card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
