@@ -141,10 +141,13 @@ export default function Page() {
     const [trips, setTrips] = useState([]);
     const [filteredTrips, setFilteredTrips] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [clickedTrip, setClickedTrip] = useState(null);
+    const [riderDetails, setRiderDetails] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         
-
+        fetchUsers();
         fetchTrips();
     }, []);
 
@@ -159,6 +162,17 @@ export default function Page() {
             setFilteredTrips(data.trips);
         }
     };
+
+    const fetchUsers = async () => {
+        const response = await fetch(`http://localhost:4000/api/auth`);
+        const data = await response.json();
+    
+        if (response.ok) {
+          setUsers(data.users);
+        } else {
+          console.error("Failed to fetch user data");
+        }
+      };
 
     const handleAddTrip = (newTrip) => {
         setTrips([...trips, newTrip]);
@@ -205,8 +219,17 @@ export default function Page() {
             console.error('Error joining the trip', error);
         }
     };
+
+
+    // Function to handle click on trip card
+    const handleTripClick = (trip) => {
+        setClickedTrip(clickedTrip === trip._id ? null : trip._id);
+        setRiderDetails(clickedTrip === trip._id ? [] : trip.riders);
+        console.log(trip.riders);
+    };
     
     const userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
+    
 
     return (
         <>
@@ -223,27 +246,54 @@ export default function Page() {
                                 </div>
                             </div>
                             <div className="col ride-search map-box find-ride py-3">
-                                {filteredTrips && filteredTrips.map((trip) => (
-                                        <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
-                                            <div className="card-body">
-                                                <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
-                                                <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
-                                                    <strong>Pickup:</strong> {trip.pickup}<br />
-                                                    <strong>Dropoff:</strong> {trip.dropoff}<br />
-                                                    <strong>Date:</strong> {trip.date}<br />
-                                                    <strong>Time:</strong> {trip.time}
-                                                </p>
-                                                <button 
-                                                    onClick={() => handleJoinTrip(trip._id)}
-                                                    className="search-button" 
-                                                    style={{ textDecoration: 'none' }}
-                                                    disabled={trip.riders.includes(userId)}
-                                                >
-                                                    Join Trip
-                                                </button>                                            </div>
+                                {filteredTrips && filteredTrips.map((trip) =>{
+                                    const ownerData = users.find(user => user._id === trip.owner);
+                                     const riderDetails = trip.riders.map(riderId => {
+                                        const riderData = users.find(user => user._id === riderId);
+                                        return riderData ? `${riderData.firstName} ${riderData.lastName} (${riderData.phoneNumber})` : null;
+                                      }).filter(detail => detail);
+                                    return(
+                                    <div 
+                                        key={trip._id} 
+                                        className={`card trip_card rounded ${clickedTrip === trip._id ? 'clicked' : ''}`} 
+                                        style={{ width: 'auto', margin: '10px', padding: '10px' }}
+                                        onClick={() => handleTripClick(trip)}
+                                    >
+                                        <div className="card-body">
+                                            <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
+                                            <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>
+                                                <strong>Pickup:</strong> {trip.pickup}<br />
+                                                <strong>Dropoff:</strong> {trip.dropoff}<br />
+                                                <strong>Date:</strong> {trip.date}<br />
+                                                <strong>Time:</strong> {trip.time}
+                                            </p>
+                                            <button 
+                                                onClick={(e) => {
+                                                    e.stopPropagation(); // Prevent triggering the card click
+                                                    handleJoinTrip(trip._id);
+                                                }}
+                                                className="search-button btn btn-primary" 
+                                                style={{ textDecoration: 'none' }}
+                                                disabled={trip.riders.includes(userId)}
+                                            >
+                                                Join Trip
+                                            </button>
+                                            {clickedTrip === trip._id && (
+                                                <div className="overlay">
+                                                    <div>
+                                                        <h5>Rider Information</h5>
+                                                        {riderDetails.length > 0 ? riderDetails.map((detail, index) => (
+                                                        <div key={index}>Rider {index + 1}: {detail}</div>
+                                                        )) : ' None'}
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
-                                    ))}
+                                    </div>
+                                )
+                                })}
                             </div>
+
                     </div>
                 </div>
             </div>
