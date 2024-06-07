@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import Navbar from "../Navbar";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -27,20 +27,10 @@ export default function Page() {
     if (response.ok) {
         const currentDate = new Date();
         console.log("Success");
-        const userTrips = data.trips.filter(trip => trip.owner === userId);
         const joinedTrips = data.trips.filter(trip => trip.riders.includes(userId));
 
         const upcoming = [];
         const past = [];
-
-        userTrips.forEach(trip => {
-          const tripDate = new Date(trip.date);
-          if (tripDate >= currentDate) {
-            upcoming.push(trip);
-          } else {
-            past.push(trip);
-          }
-        });
 
         joinedTrips.forEach(trip => {
           const tripDate = new Date(trip.date);
