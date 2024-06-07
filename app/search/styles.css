@@ -8,7 +8,7 @@ body {
     flex-direction: column;
 }
 
-.container {
+.custom-container {
     max-width: none;
     width: 90vw;
     margin: 0 5vw;
@@ -34,14 +34,14 @@ div.sticky {
 }
 
 .search-box{
-    flex-grow: .23;
+    flex-grow: .23 !important;
     height: fit-content;
 }
 
 
 .map-box{
     margin-left: 40px;
-    flex-grow: .77;
+    flex-grow: .77 !important;
 }
 
 
@@ -121,7 +121,7 @@ div.sticky {
     margin-right: -10px;
 }
 
-.button-group {
+.button-group-4 {
     display: flex;
     justify-content: space-between;
     width: 100%;

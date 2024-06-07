@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './Page.css';
 import Image from 'next/image';
 

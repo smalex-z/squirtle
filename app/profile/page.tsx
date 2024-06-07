@@ -1,9 +1,10 @@
 "use client"
-import { useState, useEffect } from "react";
-import Image from 'next/image';
+import React, { useState, useEffect } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './profile.css';
 import { UserProfileProps } from './type';
+import Image from 'next/image';
+
 
 import Navbar from '../Navbar';
 
@@ -106,7 +107,7 @@ const Profile = (props: UserProfileProps) => {
           <div className="col-8 myRides"
             style={{ backgroundImage: `url(${props.backgroundUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {trips && trips.map((trip) => (
-              <div key={trip.id} className="card trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
+              <div key={trip.id} className="card new-trip_card rounded" style={{ width: 'auto', margin: '10px', padding: '10px' }}>
                 <div className="card-body">
                   <h4 className="card-title" style={{ maxWidth: '100%', wordWrap: 'break-word' }}>{trip.title}</h4>
                   <p className="card-text" style={{ maxWidth: '100%', wordWrap: 'break-word', marginBottom: '10px' }}>

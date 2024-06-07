@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Navbar from "../Navbar";
 import "./styles.css";
 import Modal from "./Modal";
 import TripForm from "./tripsForm"
+
+import Navbar from "../Navbar";
 
 
 
@@ -123,7 +124,7 @@ function DropdownSearch({ onFindRides, setShowModal }) {
                 </div>
             </div>
 
-            <div className="button-group">
+            <div className="button-group-4">
                 <button className="btn search-button" onClick={handleFindRides}>
                     Find Rides
                 </button>
@@ -142,20 +143,22 @@ export default function Page() {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const fetchTrips = async () => {
-            const response = await fetch("http://localhost:4000/api/trips");
-            const data = await response.json();
-            console.log(data);
-
-            if (response.ok) {
-                console.log("Success");
-                setTrips(data.trips);
-                setFilteredTrips(data.trips);
-            }
-        };
+        
 
         fetchTrips();
     }, []);
+
+    const fetchTrips = async () => {
+        const response = await fetch("http://localhost:4000/api/trips");
+        const data = await response.json();
+        console.log(data);
+
+        if (response.ok) {
+            console.log("Success");
+            setTrips(data.trips);
+            setFilteredTrips(data.trips);
+        }
+    };
 
     const handleAddTrip = (newTrip) => {
         setTrips([...trips, newTrip]);
@@ -194,8 +197,7 @@ export default function Page() {
                 console.log('Successfully joined the trip', updatedTrip);
     
                 // Update the trips and filteredTrips state with the updated trip
-                setTrips(trips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
-                setFilteredTrips(filteredTrips.map(trip => trip._id === tripId ? updatedTrip.trip : trip));
+                fetchTrips();
             } else {
                 console.error('Error joining the trip', response.statusText);
             }
@@ -210,7 +212,7 @@ export default function Page() {
         <>
             <div className="ride-container">
                 <Navbar />
-                <div className="container my-3 mb-5">
+                <div className="container custom-container my-3 mb-5">
                         <div className="row stick-box" style={{ justifyContent: 'center'}}>
                             <div className="col ride-search search-box py-3 sticky">
                                 <div className="row text-container">
