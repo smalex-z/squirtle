@@ -42,14 +42,20 @@ export default function AuthPanel() {
         const lastName = event.target.lastName.value;
         const username = event.target.username.value;
         const password = event.target.password.value;
+        const conf_password = event.target.conf_password.value;
         const email = event.target.email.value;
         const phoneNumber = event.target.phoneNumber.value;
 
-        console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, email, phoneNumber })}`);
+        console.log(`here: ${JSON.stringify({ firstName, lastName, username, password, conf_password, email, phoneNumber })}`);
 
         // Check if any fields are empty
-        if (!firstName || !lastName || !username || !password || !email || !phoneNumber) {
+        if (!firstName || !lastName || !username || !password || !conf_password || !email || !phoneNumber) {
             setError("All fields are required.");
+            return;
+        }
+
+        if (password !== conf_password) {
+            setError("Passwords do not match.");
             return;
         }
 
@@ -137,6 +143,7 @@ export default function AuthPanel() {
                                                 <p><input type="tel" placeholder="Phone Number:" name="phoneNumber" id="id_phoneNumber" className={styles.formInput} /></p>
                                                 <p><input type="text" placeholder="Username:" name="username" id="id_username" className={styles.formInput} /></p>
                                                 <p><input type="password" placeholder="Password:" name="password" id="id_password" className={styles.formInput} /></p>
+                                                <p><input type="password" placeholder="Confirm Password:" name="conf_password" id="id_conf_password" className={styles.formInput} /></p>
                                                 <button type="submit" name="signup-btn" className="btn btn-info w-100 mt-4 mb-4">Sign Up</button>
                                                 {/* Wrap error in a div with specific class */}
                                                 {error && <div className={styles.errorBox}>{error}</div>}
