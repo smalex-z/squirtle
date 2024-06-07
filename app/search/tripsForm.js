@@ -17,6 +17,24 @@ const TripForm = ({ onAddTrip, handleCloseModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        // Validate required fields
+        if (!title || pickup === 'Select Location' || dropoff === 'Select Destination' || !date || !time) {
+            setError("All fields except comment are required.");
+            return;
+        }
+
+        // Check if the selected date is before yesterday's date
+        const selectedDate = new Date(date);
+        const today = new Date();
+        const yesterday = new Date(today);
+        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday.setHours(0, 0, 0, 0); // Set to start of yesterday
+
+        if (selectedDate < yesterday) {
+            setError("Date cannot be in the past. Please select a valid date.");
+            return;
+        }
+
         const userId = localStorage.getItem('userId'); // Retrieve the user ID from local storage
         console.log('userId:', userId)
         const trip = { title, pickup, dropoff, date, time, comment, owner: userId }
