@@ -66,6 +66,8 @@ export default function Page() {
               time={trip.time}
               pickup={trip.pickup}
               dropoff={trip.dropoff}
+              riders={trip.riders}
+              owner={trip.owner}
             />
           ))}
         </section>
@@ -81,6 +83,8 @@ export default function Page() {
               time={trip.time}
               pickup={trip.pickup}
               dropoff={trip.dropoff}
+              riders={trip.riders}
+              owner={trip.owner}
             />
           ))}
         </section>

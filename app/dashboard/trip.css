@@ -16,7 +16,7 @@
 }
 
 .trip-details {
-  width: 80%;
+  width: 40%;
 }
 
 .trip-address {
@@ -26,4 +26,20 @@
 .trip-datetime,
 .trip-pickup {
   color: #555;
+}
+
+.trip-riders {
+  margin-left: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-riders > strong {
+  margin-bottom: 0.5vh;
+}
+
+.trip-riders div {
+  margin-left: 1vh;
+  color: #333; /* Darker text for better readability */
+  font-style: italic; /* Optional style */
 }
